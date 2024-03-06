@@ -3,12 +3,14 @@
 $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
-$dbName = "megaMarket";
+$dbName = "mysql";
 
 try {
     $conn = new PDO("mysql:host=$dbServername;dbname=$dbName", $dbUsername, $dbPassword);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "CREATE DATABASE myMegaMarket";
+    $sql = "CREATE DATABASE megamarket";
+    $conn->exec($sql);
+    $sql = "USE megamarket";
     $conn->exec($sql);
     $sql = "CREATE TABLE IF NOT EXISTS users (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -24,10 +26,11 @@ try {
             price FLOAT NOT NULL
             )";
     $conn->exec($sql);
-    $sql = "CREATE TABLE IF NOT EXISTS shopping_cart (
+    $sql = "CREATE TABLE IF NOT EXISTS orders (
+            id INT AUTO_INCREMENT PRIMARY KEY,
             product_id INT NOT NULL,
             user_id INT NOT NULL,
-            PRIMARY KEY(product_id, user_id),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
             CONSTRAINT fk_products
                 FOREIGN KEY (product_id)
                 REFERENCES products(id) ON DELETE CASCADE,
