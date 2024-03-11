@@ -14,8 +14,15 @@ try {
     $conn->exec($sql);
     $sql = "CREATE TABLE IF NOT EXISTS users (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            username VARCHAR(50) NOT NULL,
+            email_address VARCHAR(255) NOT NULL,
+            first_name VARCHAR(50) NOT NULL,
+            surname VARCHAR(50) NOT NULL,
             password VARCHAR(255) NOT NULL,
+            country VARCHAR(100) NOT NULL,
+            postal_code VARCHAR(10) NOT NULL,
+            house_number INT NOT NULL,
+            additional VARCHAR(10) DEFAULT NULL,
+            phone_number VARCHAR(20) NOT NULL,
             admin INT DEFAULT 0
             )";
     $conn->exec($sql);
@@ -39,4 +46,19 @@ try {
                 REFERENCES users(id) ON DELETE CASCADE
             )";
     $conn->exec($sql);
-} catch (PDOException $e) {}
+}
+catch (PDOException $e) {
+    echo "Database has not been created successfully!";
+}
+
+function createUser($email, $first_name, $surname, $password, $country, $postal_code, $house_number, $additional = null, $phone_number, $admin = 0) {
+    global $conn;
+
+    try {
+        $stmt = $conn->prepare("INSERT INTO users (email, first_name, surname, password, country, postal_code, house_number, additonal, phone_number admin) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$email, $first_name, $surname, $password, $password, $country, $postal_code, $house_number, $additional, $phone_number, $admin]);
+        return $conn->lastInsertId();
+    } catch (PDOException $e) {
+        return false;
+    }
+}
