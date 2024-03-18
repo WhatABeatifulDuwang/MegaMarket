@@ -53,7 +53,7 @@ try {
     $conn->exec($sql);
 }
 catch (PDOException $e) {
-    echo "Database has not been created successfully!";
+    //echo "Database has not been created successfully!";
 }
 
 // Creates user in the database
