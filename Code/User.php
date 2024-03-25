@@ -1,30 +1,27 @@
 <?php
 
 class User {
-    private $id;
+    private $email_address;
+
     private $first_name;
     private $surname;
-    private $email_address;
+    private $password;
     private $country;
     private $postal_code;
     private $house_number;
     private $additional;
     private $phone_number;
 
-    public function __construct($id, $first_name, $surname, $email_address, $country, $postal_code, $house_number, $additional, $phone_number) {
-        $this->id = $id;
+    public function __construct($email_address, $first_name, $surname, $password, $country, $postal_code, $house_number, $additional, $phone_number) {
+        $this->email_address = $email_address;
         $this->first_name = $first_name;
         $this->surname = $surname;
-        $this->email_address = $email_address;
+        $this->password = $password;
         $this->country = $country;
         $this->postal_code = $postal_code;
         $this->house_number = $house_number;
         $this->additional = $additional;
         $this->phone_number = $phone_number;
-    }
-
-    public function getId() {
-        return $this->id;
     }
 
     public function getFirstName() {
@@ -58,5 +55,10 @@ class User {
     public function getEmailAddress()
     {
         return $this->email_address;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
     }
 }

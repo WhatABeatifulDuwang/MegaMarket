@@ -4,12 +4,11 @@
 $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
-$dbName = "mysql";
+$dbName = "megamarket";
 
 // Creating database with PDO
 try {
     $conn = new PDO("mysql:host=$dbServername;dbname=$dbName", $dbUsername, $dbPassword);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "CREATE DATABASE megamarket";
     $conn->exec($sql);
     $sql = "USE megamarket";
@@ -57,12 +56,12 @@ catch (PDOException $e) {
 }
 
 // Creates user in the database
-function createUser($email, $first_name, $surname, $password, $country, $postal_code, $house_number, $additional = null, $phone_number, $admin = 0) {
+function createUser($email, $first_name, $surname, $password, $country, $postal_code, $house_number, $additional, $phone_number, $admin = 0) {
     global $conn;
 
     try {
-        $stmt = $conn->prepare("INSERT INTO users (email_address, first_name, surname, password, country, postal_code, house_number, additonal, phone_number, admin) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$email, $first_name, $surname, $password, $password, $country, $postal_code, $house_number, $additional, $phone_number, $admin]);
+        $sql = "INSERT INTO users (email_address, first_name, surname, password, country, postal_code, house_number, additional, phone_number, admin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $conn->prepare($sql)->execute([$email, $first_name, $surname, $password, $country, $postal_code, $house_number, $additional, $phone_number, $admin]);
         return $conn->lastInsertId();
     } catch (PDOException $e) {
         return false;
