@@ -29,6 +29,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST["phone-number"]
     );
 
+//    $passwordCheck = "";
+//    if (!empty($_POST["password"] != !empty($_POST["confirm-password"]))){
+//        $password = htmlspecialchars($_POST["password"]);
+//        $confirmPassword = htmlspecialchars($_POST["confirm-password"]);
+//
+//        // Password needs to contain at least 1 uppercase, lowercase, number and special character and also at least a length of 8
+//        $patternCheck = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
+//
+//        if ($password != $confirmPassword){
+//            $passwordCheck .= "Passwords are not the same!\n";
+//        }
+//        if (!preg_match($patternCheck, $password)){
+//            $passwordCheck .= "Password must have at least 8 character length with minimum of 1 uppercase, 1 lowercase, 1 number and 1 special character!\n";
+//        }
+//    }
+//    if (!empty($passwordCheck)){
+//        echo "<div style = 'color:red'>$passwordCheck</div>";
+//    }
     if ($emailCheck == $currentUser->getEmailAddress()){
         echo "<div style = 'color:red'>This email already has been used</div>";
     }
@@ -78,7 +96,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="phone-number"></label>Phone Number:<br>
             <input type="text" id="phone-number" name="phone-number" required><br>
             <label for="password"></label>Password:<br>
-            <input type="text" id="password" name="password" required><br><br>
+            <input type="password" id="password" name="password" required><br>
+            <label for="confirm-password"></label>Confirm Password:<br>
+            <input type="password" id="confirm-password" name="confirm-password" required><br><br>
             <input type="submit" value="Register">
         </form>
     </div>
