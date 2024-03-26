@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-    <link rel="stylesheet" href="Assets/Styles/register-page.css"
+    <link rel="stylesheet" href="Assets/Styles/register-page.css">
 </head>
 <body>
 <?php include "User.php";
