@@ -15,17 +15,18 @@
         </ul>
     </nav>
 <?php
-require_once 'config.php'; // database connectie
+require_once '../database.php'; // database connectie
 
 try {
-    $sql = "SELECT id, username, email, address, phone FROM users";
-    $stmt = $pdo->query($sql);
+    $sql = "SELECT id, first_name, surname, email_address, postal_code, house_number, additional, phone_number FROM users";
+    global $conn;
+    $stmt = $conn->query($sql);
     
     if($stmt->rowCount() > 0) {
         echo "<table class=>";
         echo "<tr>";
         echo "<th>ID</th>";
-        echo "<th>Username</th>";
+        echo "<th>Name</th>";
         echo "<th>Email</th>";
         echo "<th>Address</th>";
         echo "<th>Phone</th>";
@@ -34,10 +35,10 @@ try {
         while($row = $stmt->fetch()) {
             echo "<tr>";
             echo "<td>" . $row['id'] . "</td>";
-            echo "<td>" . $row['username'] . "</td>";
-            echo "<td>" . $row['email'] . "</td>";
-            echo "<td>" . $row['address'] . "</td>";
-            echo "<td>" . $row['phone'] . "</td>";
+            echo "<td>" . $row['first_name']. ' '. $row['surname'] . "</td>";
+            echo "<td>" . $row['email_address'] . "</td>";
+            echo "<td>" . $row['postal_code'] . ', ' . $row['house_number'] . $row['additional'] . "</td>";
+            echo "<td>" . $row['phone_number'] . "</td>";
             echo "</tr>";
         }
         
