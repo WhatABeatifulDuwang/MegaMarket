@@ -9,7 +9,7 @@ $dbName = "megamarket";
 // Creating database with PDO
 try {
     $conn = new PDO("mysql:host=$dbServername;dbname=$dbName", $dbUsername, $dbPassword);
-    $sql = "CREATE DATABASE megamarket";
+    $sql = "CREATE DATABASE IF NOT EXISTS megamarket";
     $conn->exec($sql);
     $sql = "USE megamarket";
     $conn->exec($sql);
@@ -26,13 +26,15 @@ try {
             additional VARCHAR(10) DEFAULT NULL,
             phone_number VARCHAR(20) NOT NULL,
             admin INT DEFAULT 0
-            )";
+            );
+            INSERT INTO users (email_address, first_name, surname, password, country, postal_code, house_number, additional, phone_number, admin) VALUES ('admin@megamarket.nl', 'Bob', 'de Bouwer', 'admin1234', 'Nederland', '3352 AB', '123', 'C', '0612345678', 1)
+            ";
     $conn->exec($sql);
     // Creates product table
     $sql = "CREATE TABLE IF NOT EXISTS products (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            product_name VARCHAR(255) NOT NULL,
-            product_type VARCHAR(255) NOT NULL,
+            name VARCHAR(255) NOT NULL,
+            type VARCHAR(255) NOT NULL,
             price FLOAT NOT NULL
             )";
     $conn->exec($sql);
@@ -52,7 +54,7 @@ try {
     $conn->exec($sql);
 }
 catch (PDOException $e) {
-    //echo "Database has not been created successfully!";
+    echo $e->getMessage();
 }
 
 // Creates user in the database
