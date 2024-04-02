@@ -26,9 +26,9 @@ try {
             additional VARCHAR(10) DEFAULT NULL,
             phone_number VARCHAR(20) NOT NULL,
             admin INT DEFAULT 0
-            );
+            )/*;
             INSERT INTO users (email_address, first_name, surname, password, country, postal_code, house_number, additional, phone_number, admin) VALUES ('admin@megamarket.nl', 'Bob', 'de Bouwer', 'admin1234', 'Nederland', '3352 AB', '123', 'C', '0612345678', 1)
-            ";
+            */";
     $conn->exec($sql);
     // Creates product table
     $sql = "CREATE TABLE IF NOT EXISTS products (
@@ -96,6 +96,19 @@ function changeUserPersonalData($userId, $email, $first_name, $surname, $phone_n
     }
 }
 
+// Changes users password
+function changeUserPassword($userId, $password){
+    global $conn;
+
+    try {
+        $stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
+        $stmt->execute([$password, $userId]);
+        return true;
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
 // Deletes user in the database
 function deleteUser($userId) {
     global $conn;
@@ -103,6 +116,18 @@ function deleteUser($userId) {
     try {
         $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
         return $stmt->execute([$userId]);
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
+function getUserByEmail($email) {
+    global $conn;
+
+    try {
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email_address = ?");
+        $stmt->execute([$email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         return false;
     }
@@ -126,7 +151,7 @@ function getUserIdByEmail($username) {
     global $conn;
 
     try {
-        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
+        $stmt = $conn->prepare("SELECT id FROM users WHERE email_address = ?");
         $stmt->execute([$username]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {

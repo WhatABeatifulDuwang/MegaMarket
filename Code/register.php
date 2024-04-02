@@ -1,4 +1,5 @@
-<?php include "database.php";?>
+<?php include("database.php");?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,8 @@
     <link rel="stylesheet" href="Assets/Styles/register-page.css">
 </head>
 <body>
-<?php include "User.php";
+<div class="error">
+<?php include("User.php");
 session_start();
 
 $allUsers = getAllUsers();
@@ -55,12 +57,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else {
         // Password hashing
-        //$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $hashedPassword = password_hash($currentUser->getPassword(), PASSWORD_DEFAULT);
         createUser(
             $currentUser->getEmailAddress(),
             $currentUser->getFirstName(),
             $currentUser->getSurname(),
-            $currentUser->getPassword(),
+            $hashedPassword,
             $currentUser->getCountry(),
             $currentUser->getPostalCode(),
             $currentUser->getHouseNumber(),
@@ -71,13 +73,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = getUserByEmailAndPassword($currentUser->getEmailAddress(), $currentUser->getPassword());
         //setFirstAccountAsAdmin();
         $_SESSION["user"] = $user;
-        //header(index.php);
+        header("Location: index.php");
     }
 }
 ?>
-<div class="register-page">
+</div>
+<div class="container">
+    <div class="header">
     <h2>Create your account today!</h2>
-    <div class="content">
+    </div>
+    <div class="form">
         <form method="post">
             <label for="email">Email-address:</label><br>
             <input type="email" id="email" name="email" required><br>
