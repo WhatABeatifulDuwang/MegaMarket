@@ -9,7 +9,7 @@ body {
     font-size: 16px;
     line-height: 1.5;
     color: #333;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .header {
@@ -21,11 +21,15 @@ body {
 
 .top-right-buttons {
     margin-right: 16px;
-    margin-left: 16px;
+    margin-left: 47vw;
 }
 
 .top-button {
-    margin-bottom: 8px;
+    margin-right: 8px;
+}
+
+.shopping-cart {
+    height: 70px;
 }
 
 .logo {
@@ -119,9 +123,6 @@ body {
     background-color: #333;
     color: #fff;
     padding: 16px;
-}
-
-.footer-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
