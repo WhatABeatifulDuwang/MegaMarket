@@ -10,7 +10,7 @@
 <h1>Admin Dashboard</h1>
     <nav>
         <ul>
-            <li><a href="admin.php?function=listProducts">Manage Products</a></li>
+            <li><a href="admin.php?function=add_product">Manage Products</a></li>
             <!-- Add more navigation items as needed -->
         </ul>
     </nav>
@@ -56,11 +56,51 @@ catch(PDOException $e) {
 if (isset($_GET['function'])) {
     $function = $_GET['function'];
     switch ($function) {
-        case 'listProducts':
-            require 'listProducts.php';
+        case 'add_product':
+            require 'add_product.php';
             break;
         // Handle other cases
     }
+}
+
+unset($pdo);
+?>
+<br>
+<?php
+
+try {
+    $sql = "SELECT * FROM products";
+    $stmt = $pdo->query($sql);
+
+    if($stmt->rowCount() > 0) {
+        echo "<a href='add_product.php'>Add New Product</a><br/><br/>";
+        echo "<table>";
+        echo "<tr>";
+        echo "<th>ID</th>";
+        echo "<th>Name</th>";
+        echo "<th>Price</th>";
+        echo "<th>Action</th>";
+        echo "</tr>";
+        
+        while($row = $stmt->fetch()) {
+            echo "<tr>";
+            echo "<td>" . $row['id'] . "</td>";
+            echo "<td>" . $row['name'] . "</td>";
+            echo "<td>€" . $row['price'] . "</td>";
+            echo "<td>";
+            echo "<a href='edit_product.php?id=". $row['id'] ."'>Edit</a>";
+            echo " | ";
+            echo "<a href='delete_product.php?id=". $row['id'] ."' onclick='return confirm(\"Delete this product?\");'>Delete</a>";
+            echo "</td>";
+            echo "</tr>";
+        }
+        
+        echo "</table>";
+    } else {
+        echo "No products found.";
+    }
+} catch(PDOException $e) {
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
 
 unset($pdo);
