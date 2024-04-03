@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="">
-<h1>Admin Dashboard</h1>
-    <nav>
+<h1>Admin</h1>
+    <!-- <nav>
         <ul>
-            <li><a href="admin.php?function=add_product">Manage Products</a></li>
-            <!-- Add more navigation items as needed -->
+            <li><a href="add_product.php">Manage Products</a></li>
+            Add more navigation items as neede
         </ul>
-    </nav>
+    </nav> -->
 <?php
 require_once '../database.php'; // database connectie
 
@@ -23,6 +23,7 @@ try {
     $stmt = $conn->query($sql);
     
     if($stmt->rowCount() > 0) {
+        echo "<h3>Users</h3>";
         echo "<table class=>";
         echo "<tr>";
         echo "<th>ID</th>";
@@ -53,31 +54,30 @@ catch(PDOException $e) {
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
 
-if (isset($_GET['function'])) {
-    $function = $_GET['function'];
-    switch ($function) {
-        case 'add_product':
-            require 'add_product.php';
-            break;
-        // Handle other cases
-    }
-}
+// if (isset($_GET['function'])) {
+//     $function = $_GET['function'];
+//     switch ($function) {
+//         case 'add_product':
+//             require 'add_product.php';
+//             break;
+//         // Handle other cases
+//     }
+// }
 
 unset($pdo);
-?>
-<br>
-<?php
 
 try {
-    $sql = "SELECT * FROM products";
-    $stmt = $pdo->query($sql);
+    $sql = "SELECT id, name, type, price FROM products";
+    $stmt = $conn->query($sql);
 
     if($stmt->rowCount() > 0) {
+        echo "<h3>Products</h3>";
         echo "<a href='add_product.php'>Add New Product</a><br/><br/>";
         echo "<table>";
         echo "<tr>";
         echo "<th>ID</th>";
         echo "<th>Name</th>";
+        echo "<th>Type</th>";
         echo "<th>Price</th>";
         echo "<th>Action</th>";
         echo "</tr>";
@@ -86,6 +86,7 @@ try {
             echo "<tr>";
             echo "<td>" . $row['id'] . "</td>";
             echo "<td>" . $row['name'] . "</td>";
+            echo "<td>" . $row['type'] . "</td>";
             echo "<td>€" . $row['price'] . "</td>";
             echo "<td>";
             echo "<a href='edit_product.php?id=". $row['id'] ."'>Edit</a>";

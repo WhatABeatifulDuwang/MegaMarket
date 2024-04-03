@@ -23,28 +23,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // Check input errors before inserting in database
     if(empty($name_err) && empty($price_err)){
-        $sql = "INSERT INTO product (name, description, price) VALUES (:name, :description, :price)";
+        $sql = "INSERT INTO id, name, type, price VALUES :name, :type, :price";
 
-        if($stmt = $pdo->prepare($sql)){
-            // Bind variables to the prepared statement as parameters
+        if($stmt = $conn->prepare($sql)){
+            // Binding variables
             $stmt->bindParam(":name", $param_name);
             $stmt->bindParam(":description", $param_description);
             $stmt->bindParam(":price", $param_price);
             
-            // Set parameters
+            //parameters
             $param_name = $name;
-            $param_description = $_POST["description"]; // Assuming you have a textarea for description
+            $param_description = $_POST["description"];
             $param_price = $price;
             
-            // Attempt to execute the prepared statement
-            if($stmt->execute()){
-                header("location: admin_products.php");
+            if($stmt->execute()){ //er word gezegt dat in deze lijn iets verkeerds gaat
+                header("location: admin.php");
                 exit();
             } else{
                 echo "Something went wrong. Please try again later.";
             }
-            
-            // Close statement
+
             unset($stmt);
         }
     }
@@ -63,7 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
     <div>
         <h2>Add Product</h2>
-        <p>Please fill this form and submit to add a product record.</p>
+        <p>Please fill this form and submit to add a product.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div>
                 <label>Name</label>
@@ -81,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <div>
                 <input type="submit" value="Submit">
-                <a href="admin_products.php">Cancel</a>
+                <a href="admin.php">Cancel</a>
             </div>
         </form>
     </div>    
