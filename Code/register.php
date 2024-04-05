@@ -9,7 +9,7 @@
 </head>
 <body>
 <header class="header">
-    <img class="logo" src="Assets/logo.png" alt="Company Logo">
+    <a href="index.html"><img class="logo" src="Assets/logo.png" alt="Company Logo"></a>
 </header>
 <?php
 session_start();
@@ -131,6 +131,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <li>Our products are super cheap compared to other supermarket chains.</li>
             <li>If you order today, you will receive it tomorrow.</li>
         </ul>
+        Already own an account?
+        <a href="login.php">Login here</a>
     </div>
 </div>
 </body>

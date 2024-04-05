@@ -20,15 +20,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $user = getUserByEmail($email);
 
-    if ($user){
+    var_dump($user, $email);
+    if (!empty($user)){
         echo "<form method='post'>
             <input type='password' id='password' name='password' placeholder='Enter your new password'>
             <input type='submit' value='Confirm' name='Confirm'>
             </form>";
-
-        if (isset($_POST['Confirm'])){
-            changeUserPassword($user['id'], $_POST['password']);
-        }
+    }
+    if (!empty($_POST['password'])){
+        changeUserPassword($user['id'], $_POST['password']);
     }
     else{
         $errorTextTag = "<div style='color:red' id='errorTextTag'>There is no email like this in our records. Please check if the email is correct and try again</div>";
