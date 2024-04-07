@@ -204,3 +204,28 @@ function setFirstAccountAsAdmin(){
         return false;
     }
 }
+
+// Gets a product from their id
+function getProductById($productId) {
+    global $conn;
+
+    try {
+        $stmt = $conn->prepare("SELECT * FROM products WHERE id = ?");
+        $stmt->execute([$productId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
+// Gets the amount of products in the product table
+function getTotalProducts() {
+    global $conn;
+
+    try {
+        $stmt = $conn->query("SELECT COUNT(*) FROM products");
+        return $stmt->fetchColumn();
+    } catch (PDOException $e) {
+        return 0;
+    }
+}

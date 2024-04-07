@@ -1,77 +1,175 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  
-  header {
-    background-color: #f1f1f1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-  }
-  
-  .header h1 {
-    font-size: 2rem;
-  }
-  
-  .search-input {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 0.5rem;
-    outline: none;
-  }
-  
-  .sort-btn {
-    background-color: #ddd;
-    border: none;
-    border-radius: 4px;
-    padding: 0.5rem;
-    margin-left: 1rem;
-    cursor: pointer;
-  }
-  
-  .product-container {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 1rem;
-    justify-content: space-between;
-  }
-  
-  .product-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 30%;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    box-shadow: 1px 1px 2px #ccc;
-  }
-  
-  .product-img-placeholder {
-    display: block;
-    width: 100%;
-    height: 120px;
-    background-color: #ddd;
-    margin-bottom: 1rem;
-  }
-  
-  .product-info {
-    text-align: center;
-  }
-  
-  .product-info h2 {
-    margin-bottom: 0.5rem;
-  }
-  
-  .price {
-    color: #008CBA;
-    font-weight: bold;
-  }
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  border-bottom: 2px solid #3B6FEE;
+}
+
+.header h1 {
+  font-size: 2rem;
+}
+
+.top-right-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin-right: 16px;
+  margin-left: 91vw;
+}
+
+.login-button {
+  background: linear-gradient(to right, #3B6FEE, #1EB0BF);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 24px;
+}
+
+.login-button:hover {
+  background: linear-gradient(to right, #1EB0BF, #3B6FEE);
+}
+
+.shopping-cart {
+  height: 70px;
+  cursor: pointer;
+}
+
+.logo {
+  height: 128px;
+  width: auto;
+}
+
+.search-bar {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0 8px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.nav-items {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-items:hover {
+  cursor: pointer;
+}
+
+.nav-item {
+  padding: 0 8px;
+}
+
+.product-container {
+  background: linear-gradient(to left, #3B6FEE, #1EB0BF);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+.product-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 22%;
+  height: 235px;
+  margin-bottom: 10px;
+  padding: 1rem;
+}
+
+.product-img-placeholder {
+  display: block;
+  width: 100%;
+  height: 120px;
+  background-color: #ddd;
+  margin-bottom: 1rem;
+}
+
+.product-info {
+  text-align: center;
+}
+
+.product-info h2 {
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  color: #008CBA;
+  font-weight: bold;
+}
+
+.categories {
+  color: white;
+  background: linear-gradient(to right, #3B6FEE, #1EB0BF);
+  padding: 1rem;
+  width: 300px;
+  float: left;
+  height: 100vh;
+}
+
+.categories h2 {
+  margin-bottom: 1rem;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+}
+
+.category-list li {
+  width: 150px;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.category-list li:hover {
+  background-color: #1EB0BF;
+}
+
+.pagination-buttons {
+  transform: translateY(-1.5vh);
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-buttons button {
+  background-color: #3B6FEE;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-buttons button:hover {
+  background-color: #1EB0BF;
+}

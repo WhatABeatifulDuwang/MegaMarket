@@ -1,4 +1,4 @@
-<?php include "database.php";?>
+<?php include "database.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +28,7 @@
             </nav>
         </div>
         <div class="top-right-buttons">
-            <button class="top-button" onclick="gotoLoginPage();">Login</button>
+            <button class="login-button" onclick="gotoLoginPage();">Login</button>
             <img src="Assets/shopping-cart.png" class="shopping-cart" onclick="toggleShoppingCart();">
         </div>
     </header>
@@ -44,24 +44,51 @@
         <div class="product-cards">
             <div class="product-card">
                 <img class="product-image" src="Assets/placeholder.png" alt="Random Product">
-                <h3 class="product-title">Lorem ipsum dolor sit amet</h3>
-                <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                <h3 class="product-title">
+                    <?php $totalProducts = getTotalProducts();
+                    $randomProductId = rand(1, $totalProducts);
+                    $product = getProductById($randomProductId);
+                    if ($product) {
+                        echo "<h2>{$product['name']}</h2>";
+                        echo "<p>€   {$product['price']}</p>";
+                    } else {
+                        echo "Product with ID $randomProductId not found!";
+                    } ?>
+                </h3>
             </div>
             <div class="product-card">
                 <img class="product-image" src="Assets/placeholder.png" alt="Random Product">
-                <h3 class="product-title">Lorem ipsum dolor sit amet</h3>
-                <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                <h3 class="product-title">
+                    <?php $totalProducts = getTotalProducts();
+                    $randomProductId = rand(1, $totalProducts);
+                    $product = getProductById($randomProductId);
+                    if ($product) {
+                        echo "<h2>{$product['name']}</h2>";
+                        echo "<p>€   {$product['price']}</p>";
+                    } else {
+                        echo "Product with ID $randomProductId not found!";
+                    } ?>
+                </h3>
             </div>
             <div class="product-card">
                 <img class="product-image" src="Assets/placeholder.png" alt="Random Product">
-                <h3 class="product-title">Lorem ipsum dolor sit amet</h3>
-                <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                <h3 class="product-title">
+                    <?php $totalProducts = getTotalProducts();
+                    $randomProductId = rand(1, $totalProducts);
+                    $product = getProductById($randomProductId);
+                    if ($product) {
+                        echo "<h2>{$product['name']}</h2>";
+                        echo "<p>€   {$product['price']}</p>";
+                    } else {
+                        echo "Product with ID $randomProductId not found!";
+                    } ?>
+                </h3>
             </div>
         </div>
     </main>
     <footer class="footer">
-            <img class="footer-logo" src="Assets/logo.png" alt="Footer Logo">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        <img class="footer-logo" src="Assets/logo.png" alt="Footer Logo">
+        <p>© 2024 MegaMarket. All rights reserved.</p>
     </footer>
 </body>
 
