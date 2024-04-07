@@ -9,3 +9,7 @@ function gotoProductPage() {
 function toggleShoppingCart() {
     alert("Yup hier moet nog een shopping cart gedeelte komen")
 }
+
+function gotoPage(pageNumber) {
+    alert("Navigating to page " + pageNumber);
+}

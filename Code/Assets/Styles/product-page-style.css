@@ -14,7 +14,7 @@ body {
   align-items: center;
   background-color: #fff;
   padding: 20px;
-  border-bottom: 2px solid #3B6FEE; /* You can change the color here */
+  border-bottom: 2px solid #3B6FEE;
 }
 
 .header h1 {
@@ -91,28 +91,8 @@ body {
   flex-wrap: wrap;
   padding: 1rem;
   justify-content: space-between;
-  height: 100vh;
   overflow-y: auto;
 }
-
-/* Ik ga niet liegen dit hieronder komt van chatgpt, ik wist oprecht niet dat dit kon */
-.product-container::-webkit-scrollbar {
-  width: 15px;
-}
-
-.product-container::-webkit-scrollbar-track {
-  background: #3B6FEE;
-}
-
-.product-container::-webkit-scrollbar-thumb {
-  background: #1EB0BF;
-}
-
-.product-container::-webkit-scrollbar-thumb:hover {
-  background: #0e7675;
-}
-
-/* Dat dus */
 
 .product-card {
   background-color: #f9f9f9;
@@ -120,7 +100,7 @@ body {
   border-radius: 10px;
   width: 22%;
   height: 235px;
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
   padding: 1rem;
 }
 
@@ -170,5 +150,26 @@ body {
 }
 
 .category-list li:hover {
-  background-color: #ddd;
+  background-color: #1EB0BF;
+}
+
+.pagination-buttons {
+  transform: translateY(-1.5vh);
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-buttons button {
+  background-color: #3B6FEE;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-buttons button:hover {
+  background-color: #1EB0BF;
 }
