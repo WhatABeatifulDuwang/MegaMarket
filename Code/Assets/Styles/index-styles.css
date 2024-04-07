@@ -20,16 +20,32 @@ body {
 }
 
 .top-right-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
     margin-right: 16px;
-    margin-left: 47vw;
+    margin-left: 91vw;
 }
 
-.top-button {
-    margin-right: 8px;
+.login-button {
+    background: linear-gradient(to right, #3B6FEE, #1EB0BF);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 24px;
+}
+
+.login-button:hover {
+    background: linear-gradient(to right, #1EB0BF, #3B6FEE);
 }
 
 .shopping-cart {
     height: 70px;
+    cursor: pointer;
 }
 
 .logo {
@@ -57,6 +73,10 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+.nav-items:hover {
+    cursor: pointer;
 }
 
 .nav-item {
@@ -96,6 +116,7 @@ body {
     flex-basis: calc(33% - 16px);
     margin-bottom: 16px;
     background-color: #fff;
+    border-radius: 10px;
     padding: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -119,7 +140,7 @@ body {
 }
 
 .footer {
-    transform: translateY(-32vh);
+    transform: translateY(-33vh);
     background-color: #333;
     color: #fff;
     padding: 16px;
@@ -130,6 +151,7 @@ body {
 }
 
 .footer-logo {
+    border-radius: 10px;
     height: 48px;
     width: auto;
     margin-right: 16px;
@@ -138,7 +160,7 @@ body {
 .check-product-button {
     margin-left: 16px;
     padding: 8px 16px;
-    background-color: #4CAF50;
+    background-color: #20BBD1;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -146,5 +168,5 @@ body {
 }
 
 .check-product-button:hover {
-    background-color: #45a049;
+    background-color: #1EB0BF;
 }
