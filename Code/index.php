@@ -45,7 +45,8 @@
             <div class="product-card">
                 <img class="product-image" src="Assets/placeholder.png" alt="Random Product">
                 <h3 class="product-title">
-                    <?php $randomProductId = rand(1, 50);
+                    <?php $totalProducts = getTotalProducts();
+                    $randomProductId = rand(1, $totalProducts);
                     $product = getProductById($randomProductId);
                     if ($product) {
                         echo "<h2>{$product['name']}</h2>";
@@ -58,11 +59,12 @@
             <div class="product-card">
                 <img class="product-image" src="Assets/placeholder.png" alt="Random Product">
                 <h3 class="product-title">
-                    <?php $randomProductId = rand(1, 50);
+                    <?php $totalProducts = getTotalProducts();
+                    $randomProductId = rand(1, $totalProducts);
                     $product = getProductById($randomProductId);
                     if ($product) {
                         echo "<h2>{$product['name']}</h2>";
-                        echo "<p>€ {$product['price']}</p>";
+                        echo "<p>€   {$product['price']}</p>";
                     } else {
                         echo "Product with ID $randomProductId not found!";
                     } ?>
@@ -71,11 +73,12 @@
             <div class="product-card">
                 <img class="product-image" src="Assets/placeholder.png" alt="Random Product">
                 <h3 class="product-title">
-                    <?php $randomProductId = rand(1, 50);
+                    <?php $totalProducts = getTotalProducts();
+                    $randomProductId = rand(1, $totalProducts);
                     $product = getProductById($randomProductId);
                     if ($product) {
                         echo "<h2>{$product['name']}</h2>";
-                        echo "<p>€ {$product['price']}</p>";
+                        echo "<p>€   {$product['price']}</p>";
                     } else {
                         echo "Product with ID $randomProductId not found!";
                     } ?>

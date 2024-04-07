@@ -214,3 +214,15 @@ function getProductById($productId) {
         return false;
     }
 }
+
+// Gets the amount of products in the product table
+function getTotalProducts() {
+    global $conn;
+
+    try {
+        $stmt = $conn->query("SELECT COUNT(*) FROM products");
+        return $stmt->fetchColumn();
+    } catch (PDOException $e) {
+        return 0;
+    }
+}
