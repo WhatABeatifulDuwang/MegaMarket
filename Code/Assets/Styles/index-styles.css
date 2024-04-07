@@ -141,7 +141,7 @@ body {
 
 .footer {
     transform: translateY(-33vh);
-    background-color: #333;
+    background: linear-gradient(to right, #3B6FEE, #1EB0BF);
     color: #fff;
     padding: 16px;
     display: flex;
