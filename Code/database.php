@@ -35,7 +35,10 @@ try {
             id INT AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
             type VARCHAR(255) NOT NULL,
-            price FLOAT NOT NULL
+            price FLOAT NOT NULL,
+            description text NOT NULL,
+            quantity int(11) NOT NULL,
+            img text NOT NULL
             )";
     $conn->exec($sql);
     // Creates order table
@@ -178,7 +181,7 @@ function isCurrentUserAdmin() {
 
     try {
         $stmt = $conn->prepare("SELECT admin FROM users WHERE id = ?");
-        $stmt->execute([getCurrentUserId()]);
+    $stmt->execute([/*getCurrentUserId()*/]);
         if ($stmt->fetch(PDO::FETCH_ASSOC)['admin'] == 1) {
             return true;
         } else {

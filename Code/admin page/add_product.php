@@ -1,32 +1,35 @@
 <?php
 require_once '../database.php';
 
-$name = $description = $price = "";
+$name = $type = $description = $price = "";
 $name_err = $price_err = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate name
     if(empty(trim($_POST["name"]))){
         $name_err = "Please enter a name.";
-    } else{
+    }
+    else{
         $name = trim($_POST["name"]);
     }
     
     // Validate price
     if(empty(trim($_POST["price"]))){
         $price_err = "Please enter the price amount.";
-    } elseif(!ctype_digit(trim($_POST["price"]))){
+    }
+    elseif(!is_numeric(trim($_POST["price"]))){
         $price_err = "Please enter a positive integer value.";
-    } else{
+    }
+    else{
         $price = trim($_POST["price"]);
     }
     
     // Check input errors before inserting in database
     if(empty($name_err) && empty($price_err)){
-        $sql = "INSERT INTO id, name, type, price VALUES :name, :type, :price";
+        $sql = "INSERT INTO products (name, description, price) VALUES (:name, :description, :price)";
 
         if($stmt = $conn->prepare($sql)){
-            // Binding variables
+            
             $stmt->bindParam(":name", $param_name);
             $stmt->bindParam(":description", $param_description);
             $stmt->bindParam(":price", $param_price);
@@ -36,10 +39,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_description = $_POST["description"];
             $param_price = $price;
             
-            if($stmt->execute()){ //er word gezegt dat in deze lijn iets verkeerds gaat
+            if($stmt->execute()){
                 header("location: admin.php");
                 exit();
-            } else{
+            }
+            else{
                 echo "Something went wrong. Please try again later.";
             }
 
@@ -47,7 +51,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
-    // Close connection
     unset($pdo);
 }
 ?>
@@ -61,13 +64,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
     <div>
         <h2>Add Product</h2>
-        <p>Please fill this form and submit to add a product.</p>
+        <p>Fill the form to add a NEW product!</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div>
                 <label>Name</label>
                 <input type="text" name="name" value="<?php echo $name; ?>">
                 <span><?php echo $name_err; ?></span>
             </div>    
+            <div>
+                <label>Type</label>
+                <textarea type="text" name="type"><?php echo $type; ?></textarea>
+            </div>
             <div>
                 <label>Description</label>
                 <textarea name="description"><?php echo $description; ?></textarea>
