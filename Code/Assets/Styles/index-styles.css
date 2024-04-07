@@ -134,13 +134,8 @@ body {
     margin-bottom: 8px;
 }
 
-.product-description {
-    font-size: 14.4px;
-    margin-bottom: 16px;
-}
-
 .footer {
-    transform: translateY(-33vh);
+    transform: translateY(-34vh);
     background: linear-gradient(to right, #3B6FEE, #1EB0BF);
     color: #fff;
     padding: 16px;

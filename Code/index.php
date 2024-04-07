@@ -1,4 +1,4 @@
-<?php include "database.php";?>
+<?php include "database.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,18 +44,42 @@
         <div class="product-cards">
             <div class="product-card">
                 <img class="product-image" src="Assets/placeholder.png" alt="Random Product">
-                <h3 class="product-title">Lorem ipsum dolor sit amet</h3>
-                <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                <h3 class="product-title">
+                    <?php $randomProductId = rand(1, 50);
+                    $product = getProductById($randomProductId);
+                    if ($product) {
+                        echo "<h2>{$product['name']}</h2>";
+                        echo "<p>€   {$product['price']}</p>";
+                    } else {
+                        echo "Product with ID $randomProductId not found!";
+                    } ?>
+                </h3>
             </div>
             <div class="product-card">
                 <img class="product-image" src="Assets/placeholder.png" alt="Random Product">
-                <h3 class="product-title">Lorem ipsum dolor sit amet</h3>
-                <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                <h3 class="product-title">
+                    <?php $randomProductId = rand(1, 50);
+                    $product = getProductById($randomProductId);
+                    if ($product) {
+                        echo "<h2>{$product['name']}</h2>";
+                        echo "<p>€ {$product['price']}</p>";
+                    } else {
+                        echo "Product with ID $randomProductId not found!";
+                    } ?>
+                </h3>
             </div>
             <div class="product-card">
                 <img class="product-image" src="Assets/placeholder.png" alt="Random Product">
-                <h3 class="product-title">Lorem ipsum dolor sit amet</h3>
-                <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                <h3 class="product-title">
+                    <?php $randomProductId = rand(1, 50);
+                    $product = getProductById($randomProductId);
+                    if ($product) {
+                        echo "<h2>{$product['name']}</h2>";
+                        echo "<p>€ {$product['price']}</p>";
+                    } else {
+                        echo "Product with ID $randomProductId not found!";
+                    } ?>
+                </h3>
             </div>
         </div>
     </main>

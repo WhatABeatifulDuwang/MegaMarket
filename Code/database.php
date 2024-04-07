@@ -201,3 +201,16 @@ function setFirstAccountAsAdmin(){
         return false;
     }
 }
+
+// Gets a product from their id
+function getProductById($productId) {
+    global $conn;
+
+    try {
+        $stmt = $conn->prepare("SELECT * FROM products WHERE id = ?");
+        $stmt->execute([$productId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return false;
+    }
+}
