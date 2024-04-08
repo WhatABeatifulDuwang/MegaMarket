@@ -223,7 +223,7 @@ function getTotalProducts() {
     global $conn;
 
     try {
-        $stmt = $conn->query("SELECT COUNT(*) FROM products");
+        $stmt = $conn->query("SELECT COUNT(*) FROM products WHERE id IS NOT NULL");
         return $stmt->fetchColumn();
     } catch (PDOException $e) {
         return 0;
