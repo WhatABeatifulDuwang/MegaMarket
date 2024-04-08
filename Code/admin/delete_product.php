@@ -1,14 +1,16 @@
 <?php
+
 require_once '../database.php';
-$id = $sql;
 
-$id = $_POST['id'];
+if(isset($_GET['id'])) {
+    $conn = new PDO("mysql:host=$dbServername;dbname=$dbName", $dbUsername, $dbPassword);
+    $id = $_GET['id'];
 
-$sql = "DELETE FROM products WHERE id = $id";
+    $sql = "DELETE FROM products WHERE id = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(["id" => $id]);
 
-if($id->execute()){
-    header("location: ../admin.php");
+    header("location: admin.php");
     // confirm("has been deleted");
     exit();
 }
-?>
