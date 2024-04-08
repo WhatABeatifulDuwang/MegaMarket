@@ -1,7 +1,7 @@
 <?php
 include('database.php');
 session_start();
-if (!$_SESSION){
+if ($_SESSION){
     $SessionUser = $_SESSION['user'];
 }
 

@@ -21,7 +21,7 @@
 
         if ($user &&password_verify($password, $user['password'])) {
             $userId = getUserIdByEmail($email);
-            $_SESSION["user"] = $userId;
+            $_SESSION["user"]["id"] = $userId;
             header("Location: index.php");
             exit();
         } else {

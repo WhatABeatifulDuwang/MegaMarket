@@ -11,12 +11,6 @@
 </nav>
 <?php
 include "User.php";
-// Retrieves data from all users for checks
-$allUsers = getAllUsers();
-foreach ($allUsers as $user){
-    $emailCheck = $user["email_address"];
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $currentUser = new User(
         $_POST["email"],
@@ -30,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST["phone-number"]
     );
 
-    $emailUsed = false;
     $passwordCheck = "";
     $registrationSuccess = true;
     $password = htmlspecialchars($currentUser->getPassword());
@@ -39,19 +32,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Password needs to contain at least 1 uppercase, lowercase, number and special character and also at least a length of 8
     $patternCheck = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
 
-    // Checks if the email is already in use
-    if (!empty($emailCheck) == $currentUser->getEmailAddress()){
-        $emailUsed = true;
-        $registrationSuccess = false;
+    $emailUsed = false;
+    // Retrieves data from all users for checks
+    $allUsers = getAllUsers();
+    foreach ($allUsers as $user) {
+        $emailCheck = $user["email_address"];
+        // Checks if the email is already in use
+        if (!$emailUsed && $emailCheck === $currentUser->getEmailAddress()) {
+            $emailUsed = true;
+            $registrationSuccess = false;
+        }
     }
     // Checks if the passwords are the same
-    if ($password != $confirmPassword){
+    if ($password != $confirmPassword) {
         $passwordCheck .= "Passwords are not the same!\n";
         $registrationSuccess = false;
 
     }
     // Checks if the password is according to password rules
-    if (!preg_match($patternCheck, $password)){
+    if (!preg_match($patternCheck, $password)) {
         $passwordCheck .= "Password must have at least 8 character length with minimum of 1 uppercase, 1 lowercase, 1 number and 1 special character!\n";
         $registrationSuccess = false;
     }
@@ -75,6 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = getUserByEmailAndPassword($currentUser->getEmailAddress(), $currentUser->getPassword());
         setFirstAccountAsAdmin();
         $_SESSION["user"] = $user;
+        $_SESSION["user"]["id"] = $user["id"];
         header("Location: index.php");
     }
 }
