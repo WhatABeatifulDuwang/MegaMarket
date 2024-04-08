@@ -179,9 +179,9 @@ function isCurrentUserAdmin() {
 
     try {
         $stmt = $conn->prepare("SELECT admin FROM users WHERE id = ?");
-        $stmt->execute([getCurrentUserId()]);
+        $stmt->execute([getCurrentUserId()['id']]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($user && $user['admin'] == '1') {
+        if ($user && $user['admin'] == 1) {
             return true;
         } else {
             return false;
