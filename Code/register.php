@@ -15,11 +15,9 @@ include "User.php";
 $allUsers = getAllUsers();
 foreach ($allUsers as $user){
     $emailCheck = $user["email_address"];
-    $phoneCheck = $user["phone_number"];
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $emailUsed = false;
     $currentUser = new User(
         $_POST["email"],
         $_POST["first-name"],
@@ -32,7 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST["phone-number"]
     );
 
+    $emailUsed = false;
     $passwordCheck = "";
+    $registrationSuccess = true;
     $password = htmlspecialchars($currentUser->getPassword());
     $confirmPassword = htmlspecialchars($_POST["confirm-password"]);
 
@@ -40,18 +40,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $patternCheck = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
 
     // Checks if the email is already in use
-    if ($emailCheck == $currentUser->getEmailAddress()){
+    if ($emailCheck === $currentUser->getEmailAddress()){
         $emailUsed = true;
+        $registrationSuccess = false;
     }
     // Checks if the passwords are the same
     if ($password != $confirmPassword){
         $passwordCheck .= "Passwords are not the same!\n";
+        $registrationSuccess = false;
+
     }
     // Checks if the password is according to password rules
     if (!preg_match($patternCheck, $password)){
         $passwordCheck .= "Password must have at least 8 character length with minimum of 1 uppercase, 1 lowercase, 1 number and 1 special character!\n";
+        $registrationSuccess = false;
     }
-    else {
+    if ($registrationSuccess) {
         // Password hashing
         $hashedPassword = password_hash($currentUser->getPassword(), PASSWORD_DEFAULT);
         // Passing model variables to a query in the database
@@ -111,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 Your password must contain at least the following:
                 <ul>
                     <li>A minimum of 8 characters</li>
-                    <li>A minimum of 1 letter</li>
+                    <li>A minimum of 1 capitalized letter</li>
                     <li>A minimum of 1 number</li>
                     <li>A minimum of 1 special character (for example: !?@$%&)</li>
                 </ul>

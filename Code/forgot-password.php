@@ -14,6 +14,7 @@
 </div>
 <div class="error">
 <?php
+include "Assets/components/navbar.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $user = getUserByEmail($email);
