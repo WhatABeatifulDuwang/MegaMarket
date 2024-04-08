@@ -33,11 +33,11 @@ echo <<<EOT
             <div class="content-wrapper">
                 <h1>MegaMarket</h1>
                 <nav>
-                    <a href="index.php">Home</a>
-                    <a href="index.php?page=products">Products</a>
+                    <a href="../index.php">Home</a>
+                    <a href="../index.php?page=products">Products</a>
                 </nav>
                 <div class="link-icons">
-                    <a href="index.php?page=cart">
+                    <a href="../index.php?page=cart">
 						<i class="fas fa-shopping-cart"></i>
                         <span>$num_items_in_cart</span>
 					</a>

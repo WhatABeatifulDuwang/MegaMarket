@@ -6,6 +6,14 @@ function gotoProductPage() {
     window.location.href = 'product-page.php'; 
 }
 
+function goToAdminPage() {
+    window.location.href = 'admin.php';
+}
+
+function goToHomePage() {
+    window.location.href = 'index.php';
+}
+
 function toggleShoppingCart() {
-    alert("Yup hier moet nog een shopping cart gedeelte komen")
+    window.location.href = 'cart.php';
 }
