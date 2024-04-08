@@ -10,7 +10,7 @@
 </head>
 <body>
 <header class="header">
-    <a href="index.html"><img class="logo" src="Assets/logo.png" alt="Company Logo"></a>
+    <a href="index.php"><img class="logo" src="Assets/images/logo.png" alt="Company Logo"></a>
 </header>
 <div class="container">
     <div class="error">
@@ -25,7 +25,7 @@
         if ($user &&password_verify($password, $user['password'])) {
             $userId = getUserIdByEmail($email);
             $_SESSION["user"] = $userId;
-            header("Location: index.html");
+            header("Location: index.php");
             exit();
         } else {
             $errorTextTag = "<div style='color:red' id='errorTextTag'>There is no account like this in our records. Please re-check the password and username and try again</div>";

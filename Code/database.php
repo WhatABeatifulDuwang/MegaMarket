@@ -26,9 +26,9 @@ try {
             additional VARCHAR(10) DEFAULT NULL,
             phone_number VARCHAR(20) NOT NULL,
             admin INT DEFAULT 0
-            )/*;
-            INSERT INTO users (email_address, first_name, surname, password, country, postal_code, house_number, additional, phone_number, admin) VALUES ('admin@megamarket.nl', 'Bob', 'de Bouwer', 'admin1234', 'Nederland', '3352 AB', '123', 'C', '0612345678', 1)
-            */";
+            );
+            INSERT IGNORE INTO users (id, email_address, first_name, surname, password, country, postal_code, house_number, additional, phone_number, admin) VALUES (1,'admin@megamarket.nl', 'Bob', 'de Bouwer', 'admin1234', 'Nederland', '3352 AB', '123', 'C', '0612345678', 1)
+            ";
     $conn->exec($sql);
     // Creates product table
     $sql = "CREATE TABLE IF NOT EXISTS products (

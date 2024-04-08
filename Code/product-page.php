@@ -6,13 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Assets/Styles/product-page-style.css">
-    <script src="Assets/product-page-script.js"></script>
+    <script src="Assets/Scripts/product-page-script.js"></script>
     <title>Products</title>
 </head>
 
 <body>
     <header class="header">
-        <img class="logo" src="Assets/logo.png" alt="Company Logo">
+        <img class="logo" src="Assets/images/logo.png" alt="Company Logo">
         <div class="search-bar">
             <input type="text" placeholder="What are you looking for?">
         </div>
@@ -29,7 +29,7 @@
         </div>
         <div class="top-right-buttons">
             <button class="login-button" onclick="gotoLoginPage();">Login</button>
-            <img src="Assets/shopping-cart.png" class="shopping-cart" onclick="toggleShoppingCart();">
+            <img src="Assets/images/shopping-cart.png" class="shopping-cart" onclick="toggleShoppingCart();">
         </div>
     </header>
     <div class="categories">

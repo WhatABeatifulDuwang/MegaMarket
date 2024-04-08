@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>Forgot Password</title>
     <link rel="stylesheet" href="Assets/Styles/forgot-page.css">
-    <script src="Assets/forgot-password.js"></script>
+    <script src="Assets/Scripts/forgot-password.js"></script>
 </head>
 <body>
 <div class="container">
@@ -19,8 +19,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $user = getUserByEmail($email);
-
-    var_dump($user, $email);
+    
     if (!empty($user)){
         echo "<form method='post'>
             <input type='password' id='password' name='password' placeholder='Enter your new password'>

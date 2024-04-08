@@ -9,7 +9,7 @@
 </head>
 <body>
 <header class="header">
-    <a href="index.html"><img class="logo" src="Assets/logo.png" alt="Company Logo"></a>
+    <a href="index.php"><img class="logo" src="Assets/images/logo.png" alt="Company Logo"></a>
 </header>
 <?php
 session_start();
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = getUserByEmailAndPassword($currentUser->getEmailAddress(), $currentUser->getPassword());
         //setFirstAccountAsAdmin();
         $_SESSION["user"] = $user;
-        header("Location: index.html");
+        header("Location: index.php");
     }
 }
 ?>
