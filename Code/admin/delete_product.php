@@ -10,7 +10,9 @@ if(isset($_GET['id'])) {
     $stmt = $conn->prepare($sql);
     $stmt->execute(["id" => $id]);
 
-    header("location: admin.php");
+    header("location: ../admin.php");
     // confirm("has been deleted");
     exit();
 }
+?>
+<title>Deleting...</title>

@@ -15,7 +15,7 @@ if(isset($_POST['btnSubmit'])) {
     ]);
 
     // keer terug naar admin.php
-    header("location: admin.php");
+    header("location: ../admin.php");
 }
 
 if(isset($_GET['id'])) {
@@ -29,6 +29,7 @@ if(isset($_GET['id'])) {
     //echo "<pre>".print_r($data, true)."</pre>"; 
 
     ?>
+<title>Edit</title>
 <h2>Edit Product</h2>
 <hr>
     <form action="" method="post">
@@ -53,7 +54,7 @@ if(isset($_GET['id'])) {
         </div>
         <div>
             <input type="submit" name="btnSubmit" value="Submit">
-            <a href="admin.php">Cancel</a>
+            <a href="../admin.php">Cancel</a>
         </div>
     </form>
     <?php

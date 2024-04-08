@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_price = $price;
             
             if($stmt->execute()){
-                header("location: admin.php");
+                header("location: ../admin.php");
                 exit();
             }
             else{
