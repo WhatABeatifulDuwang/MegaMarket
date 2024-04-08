@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $patternCheck = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
 
     // Checks if the email is already in use
-    if ($emailCheck === $currentUser->getEmailAddress()){
+    if (!empty($emailCheck) == $currentUser->getEmailAddress()){
         $emailUsed = true;
         $registrationSuccess = false;
     }
@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Making a local variable and putting it in the session
         $user = getUserByEmailAndPassword($currentUser->getEmailAddress(), $currentUser->getPassword());
-        //setFirstAccountAsAdmin();
+        setFirstAccountAsAdmin();
         $_SESSION["user"] = $user;
         header("Location: index.php");
     }

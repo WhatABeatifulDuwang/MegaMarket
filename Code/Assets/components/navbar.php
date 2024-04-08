@@ -1,7 +1,7 @@
 <?php
 include('database.php');
 session_start();
-if ($_SESSION !=  null){
+if (!$_SESSION){
     $SessionUser = $_SESSION['user'];
 }
 
@@ -23,8 +23,7 @@ if (isset($_POST['logout'])) {
             <ul class="nav-items">
                 <li class="nav-item" onclick="goToHomePage();">Home</li>
                 <li class="nav-item" onclick="gotoProductPage();">Products</li>
-                <?php
-                if (!empty($SessionUser) && isCurrentUserAdmin()):?>
+                <?php if ($_SESSION && isCurrentUserAdmin()):?>
                 <li class="nav-item" onclick="goToAdminPage();">Admin</li>
                 <?php endif; ?>
                 <li class="nav-item">Placeholder</li>
