@@ -43,6 +43,7 @@
 </html> -->
 
 <?php
+session_start();
 // If the user clicked the add to cart button on the product page we can check for the form data
 if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['product_id']) && is_numeric($_POST['quantity'])) {
     // Set the post variables so we easily identify them, also make sure they are integer
@@ -131,7 +132,7 @@ if ($products_in_cart) {
 }
 ?>
 
-<?=template_header('Cart')?>
+<?php /*=template_header('Cart')*/?>
 
 <div class="cart content-wrapper">
     <h1>Shopping Cart</h1>
@@ -155,7 +156,7 @@ if ($products_in_cart) {
                 <tr>
                     <td class="img">
                         <a href="index.php?page=product&id=<?=$product['id']?>">
-                            <img src="../assets/imgs/<?=$product['img']?>" width="50" height="50" alt="<?=$product['name']?>">
+                            <img src="Assets/product-images/<?=$product['img']?>" width="50" height="50" alt="<?=$product['name']?>">
                         </a>
                     </td>
                     <td>
@@ -185,4 +186,4 @@ if ($products_in_cart) {
     </form>
 </div>
 
-<?=template_footer()?>
+<?//=template_footer()?>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Assets/Styles/admin-style.css">
 </head>
 <body class="">
 <h1>Admin</h1>
@@ -15,7 +15,7 @@
         </ul>
     </nav> -->
 <?php
-require_once '../database.php'; // database connectie
+require_once 'database.php'; // database connectie
 
 try {
     $sql = "SELECT id, first_name, surname, email_address, postal_code, house_number, additional, phone_number FROM users";
@@ -72,7 +72,7 @@ try {
 
     if($stmt->rowCount() > 0) {
         echo "<h3>Products</h3>";
-        echo "<a href='add_product.php'>Add New Product</a><br/><br/>";
+        echo "<a href='admin/add_product.php'>Add New Product</a><br/><br/>";
         echo "<table>";
         echo "<tr>";
         echo "<th>ID</th>";
@@ -91,9 +91,9 @@ try {
             echo "<td>" . $row['description'] . "</td>";
             echo "<td>€" . $row['price'] . "</td>";
             echo "<td>";
-            echo "<a href='edit_product.php?id=". $row['id'] ."'>Edit</a>";
+            echo "<a href='admin/edit_product.php?id=". $row['id'] ."'>Edit</a>";
             echo " | ";
-            echo "<a href='delete_product.php?id=". $row['id'] ."' onclick='return confirm(\"Delete this product?\");'>Delete</a>";
+            echo "<a href='admin/delete_product.php?id=". $row['id'] ."' onclick='return confirm(\"Delete this product?\");'>Delete</a>";
             echo "</td>";
             echo "</tr>";
         }
@@ -101,7 +101,7 @@ try {
         echo "</table>";
     } else {
         echo "No products found.";
-        echo "<br><a href='add_product.php'>Add New Product</a><br/><br/>";
+        echo "<br><a href='admin/add_product.php'>Add New Product</a><br/><br/>";
     }
 }
 catch(PDOException $e) {

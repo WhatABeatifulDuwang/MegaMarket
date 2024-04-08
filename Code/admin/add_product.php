@@ -86,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <div>
                 <input type="submit" value="Submit">
-                <a href="admin.php">Cancel</a>
+                <a href="../admin.php">Cancel</a>
             </div>
         </form>
     </div>    

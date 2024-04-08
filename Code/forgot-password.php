@@ -19,7 +19,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $user = getUserByEmail($email);
-    
+
     if (!empty($user)){
         echo "<form method='post'>
             <input type='password' id='password' name='password' placeholder='Enter your new password'>

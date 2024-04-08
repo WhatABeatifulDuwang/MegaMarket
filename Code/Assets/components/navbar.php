@@ -7,9 +7,9 @@
     <div class="nav-wrapper">
         <nav class="navbar">
             <ul class="nav-items">
+                <li class="nav-item" onclick="goToHomePage();">Home</li>
                 <li class="nav-item" onclick="gotoProductPage();">Products</li>
-                <li class="nav-item">Placeholder</li>
-                <li class="nav-item">Placeholder</li>
+                <li class="nav-item" onclick="goToAdminPage();">Admin</li>
                 <li class="nav-item">Placeholder</li>
                 <li class="nav-item">Contact us</li>
             </ul>

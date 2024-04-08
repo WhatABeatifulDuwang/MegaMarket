@@ -8,20 +8,6 @@ body {
     overflow-x: hidden;
 }
 
-.header {
-    display: flex;
-    flex-direction: row;
-    background-color: #fff;
-    padding: 8px;
-    box-sizing: border-box;
-    border-bottom: 1px solid lightgrey;
-}
-
-.logo {
-    height: 128px;
-    width: auto;
-}
-
 .container {
     display: flex;
     flex-direction: row;

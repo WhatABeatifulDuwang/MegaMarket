@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="Assets/Styles/register-page.css">
 </head>
 <body>
-<header class="header">
-    <a href="index.php"><img class="logo" src="Assets/images/logo.png" alt="Company Logo"></a>
-</header>
+<nav>
+    <?php include "Assets/components/navbar.php"?>
+</nav>
 <?php
 session_start();
 
