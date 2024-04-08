@@ -39,6 +39,10 @@
     width: auto;
 }
 
+.logo:hover {
+    cursor: pointer;
+}
+
 .search-bar {
     display: flex;
     border: 1px solid #ccc;

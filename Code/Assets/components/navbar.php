@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="Assets/Styles/navbar-styles.css">
 <script src="Assets/Scripts/navbar-scripts.js"></script>
 <header class="header">
-    <img class="logo" src="Assets/images/logo.png" alt="Company Logo">
+    <img class="logo" src="Assets/images/logo.png" alt="Company Logo" onclick="goToHomePage();">
     <div class="search-bar">
         <input type="text" placeholder="What are you looking for?">
     </div>
