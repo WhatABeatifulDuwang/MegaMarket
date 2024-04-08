@@ -1,0 +1,17 @@
+.footer {
+    transform: translateY(-34vh);
+    background: linear-gradient(to right, #3B6FEE, #1EB0BF);
+    color: #fff;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-logo {
+    border-radius: 10px;
+    height: 48px;
+    width: auto;
+    margin-right: 16px;
+}

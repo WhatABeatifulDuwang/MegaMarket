@@ -1,0 +1,70 @@
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.top-right-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-right: 16px;
+    margin-left: 91vw;
+}
+
+.login-button {
+    background: linear-gradient(to right, #3B6FEE, #1EB0BF);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 24px;
+}
+
+.login-button:hover {
+    background: linear-gradient(to right, #1EB0BF, #3B6FEE);
+}
+
+.shopping-cart {
+    height: 70px;
+    cursor: pointer;
+}
+
+.logo {
+    height: 128px;
+    width: auto;
+}
+
+.search-bar {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 8px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.nav-items {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-items:hover {
+    cursor: pointer;
+}
+
+.nav-item {
+    padding: 0 8px;
+}

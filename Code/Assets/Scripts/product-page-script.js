@@ -3,7 +3,7 @@ function gotoLoginPage() {
 }
 
 function gotoProductPage() {
-    window.location.href = 'product-page.html';
+    window.location.href = 'product-page.php';
 }
 
 function toggleShoppingCart() {
