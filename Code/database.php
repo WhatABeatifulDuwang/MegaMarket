@@ -181,7 +181,7 @@ function isCurrentUserAdmin() {
 
     try {
         $stmt = $conn->prepare("SELECT admin FROM users WHERE id = ?");
-    $stmt->execute([/*getCurrentUserId()*/]);
+    $stmt->execute([getCurrentUserId()]);
         if ($stmt->fetch(PDO::FETCH_ASSOC)['admin'] == 1) {
             return true;
         } else {
@@ -190,6 +190,10 @@ function isCurrentUserAdmin() {
     } catch (PDOException $e) {
         return false;
     }
+}
+
+function getCurrentUserId() {
+    return $_SESSION['user']['id'];
 }
 
 // Sets first account created as admin

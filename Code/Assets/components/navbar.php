@@ -1,3 +1,14 @@
+<?php
+include('database.php');
+session_start();
+$user = $_SESSION['user'];
+
+if (isset($_POST['logout'])) {
+    unset($_SESSION["user"]["id"]);
+    header('Location: index.php');
+    exit();
+}
+?>
 <link rel="stylesheet" href="Assets/Styles/navbar-styles.css">
 <script src="Assets/Scripts/navbar-scripts.js"></script>
 <header class="header">
@@ -10,7 +21,10 @@
             <ul class="nav-items">
                 <li class="nav-item" onclick="goToHomePage();">Home</li>
                 <li class="nav-item" onclick="gotoProductPage();">Products</li>
+                <?php
+                if (isCurrentUserAdmin() && !empty($user)):?>
                 <li class="nav-item" onclick="goToAdminPage();">Admin</li>
+                <?php endif; ?>
                 <li class="nav-item">Placeholder</li>
                 <li class="nav-item">Contact us</li>
             </ul>

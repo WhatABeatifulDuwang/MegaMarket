@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="Assets/Styles/admin-style.css">
 </head>
 <body class="">
+<?php include "Assets/components/navbar.php";?>
 <h1>Admin</h1>
     <!-- <nav>
         <ul>
@@ -16,6 +17,15 @@
     </nav> -->
 <?php
 require_once 'database.php'; // database connectie
+$uid = $_SESSION["user"]["id"];
+
+if (!isCurrentUserAdmin($uid) && $uid != null) {
+    echo ("<script>
+    window.alert('You do not have access to this place');
+    window.location.href= '../pages/home.php';
+    </script>");
+    exit();
+}
 
 try {
     $sql = "SELECT id, first_name, surname, email_address, postal_code, house_number, additional, phone_number FROM users";

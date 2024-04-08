@@ -1,5 +1,3 @@
-<?php include("database.php"); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +13,6 @@
 <div class="container">
     <div class="error">
         <?php
-        session_start();
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errorTextTag = "<div></div>";
             $email = $_POST["email"];

@@ -1,5 +1,3 @@
-<?php include("database.php");?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +10,7 @@
     <?php include "Assets/components/navbar.php"?>
 </nav>
 <?php
-session_start();
-
+include "User.php";
 // Retrieves data from all users for checks
 $allUsers = getAllUsers();
 foreach ($allUsers as $user){
