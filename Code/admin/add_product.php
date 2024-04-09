@@ -26,16 +26,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // Check input errors before inserting in database
     if(empty($name_err) && empty($price_err)){
-        $sql = "INSERT INTO products (name, description, price) VALUES (:name, :description, :price)";
+        $sql = "INSERT INTO products (name, type, description, price) VALUES (:name, :type, :description, :price)";
 
         if($stmt = $conn->prepare($sql)){
             
             $stmt->bindParam(":name", $param_name);
+            $stmt->bindParam(":type", $param_type);
             $stmt->bindParam(":description", $param_description);
             $stmt->bindParam(":price", $param_price);
             
             //parameters
             $param_name = $name;
+            $param_type = $_POST["type"];
             $param_description = $_POST["description"];
             $param_price = $price;
             
@@ -60,35 +62,40 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <meta charset="UTF-8">
     <title>Add Product</title>
+    <link rel="stylesheet" href="../Assets/Styles/admin-style.css">
 </head>
 <body>
-    <div>
-        <h2>Add Product</h2>
-        <p>Fill the form to add a NEW product!</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div>
-                <label>Name</label>
-                <input type="text" name="name" value="<?php echo $name; ?>">
-                <span><?php echo $name_err; ?></span>
-            </div>    
-            <div>
-                <label>Type</label>
-                <textarea type="text" name="type"><?php echo $type; ?></textarea>
-            </div>
-            <div>
-                <label>Description</label>
-                <textarea name="description"><?php echo $description; ?></textarea>
-            </div>
-            <div>
-                <label>Price</label>
-                <input type="text" name="price" value="<?php echo $price; ?>">
-                <span><?php echo $price_err; ?></span>
-            </div>
-            <div>
-                <input type="submit" value="Submit">
-                <a href="../admin.php">Cancel</a>
-            </div>
-        </form>
+    <div class="container">
+        <div class="form">
+            <h2>Add Product</h2>
+            <hr>
+            <p>Fill the form to add a NEW product!</p>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div>
+                    <label>Name:</label><br>
+                    <input type="text" name="name" value="<?php echo $name; ?>">
+                    <span><?php echo $name_err; ?></span>
+                </div>    
+                <div>
+                    <label>Type:</label><br>
+                    <input type="text"><?php echo $type; ?></input>
+                </div>
+                <div>
+                    <label>Description:</label><br>
+                    <textarea name="description"><?php echo $description; ?></textarea>
+                </div>
+                <div>
+                    <label>Price: (€/Euro will be added automatically!)</label><br>
+                    <input type="text" name="price" value="<?php echo $price; ?>">
+                    <span><?php echo $price_err; ?></span>
+                </div>
+                <div>
+                    <br>
+                    <input type="submit" value="Submit" id="postButton">
+                    <a href="../admin.php">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>    
 </body>
 </html>

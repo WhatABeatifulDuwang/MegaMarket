@@ -34,7 +34,7 @@ try {
     
     if($stmt->rowCount() > 0) {
         echo "<h3>Users</h3>";
-        echo "<table class=>";
+        echo "<table>";
         echo "<tr>";
         echo "<th>ID</th>";
         echo "<th>Name</th>";
@@ -87,7 +87,7 @@ try {
         echo "<tr>";
         echo "<th>ID</th>";
         echo "<th>Name</th>";
-        echo "<th>Type</th>";
+        echo "<th class='admin-table' width='5%'><a href='http://www.google.com'>Type</th>";
         echo "<th>Description</th>";
         echo "<th>Price</th>";
         echo "<th>Action</th>";

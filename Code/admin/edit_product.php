@@ -30,32 +30,39 @@ if(isset($_GET['id'])) {
 
     ?>
 <title>Edit</title>
-<h2>Edit Product</h2>
-<hr>
-    <form action="" method="post">
-        <input type="hidden" name="id" value="<?php echo $data->id; ?>">
-        <div>
-            <label>Name</label>
-            <input type="text" name="name" value="<?php echo $data->name; ?>">
-            <!-- <span><?php echo $name_err; ?></span> -->
-        </div>    
-        <div>
-            <label>Type</label>
-            <textarea type="text" name="type"><?php echo $data->type; ?></textarea>
-        </div>
-        <div>
-            <label>Description</label>
-            <textarea name="description"><?php echo $data->description; ?></textarea>
-        </div>
-        <div>
-            <label>Price</label>
-            <input type="text" name="price" value="<?php echo $data->price; ?>">
-            <!-- <span><?php echo $price_err; ?></span> -->
-        </div>
-        <div>
-            <input type="submit" name="btnSubmit" value="Submit">
-            <a href="../admin.php">Cancel</a>
-        </div>
+<link rel="stylesheet" href="../Assets/Styles/admin-style.css">
+<div class="container">
+    <div class="form">
+        <h2>Edit Product</h2>
+        <hr>
+        <p>Edit current data.</p>
+        <form action="" method="post">
+            <input type="hidden" name="id" value="<?php echo $data->id; ?>">
+            <div>
+                <label>Name:</label><br>
+                <input type="text" name="name" value="<?php echo $data->name; ?>">
+                <!-- <span><?php echo $name_err; ?></span> -->
+            </div>    
+            <div>
+                <label>Type:</label><br>
+                <input type="text" name="type" value="<?php echo $data->type; ?>">
+            </div>
+            <div>
+                <label>Description:</label><br>
+                <textarea name="description"><?php echo $data->description; ?></textarea>
+            </div>
+            <div>
+                <label>Price: (€/Euro will be added automatically!)</label><br>
+                <input type="text" name="price" value="<?php echo $data->price; ?>">
+                <!-- <span><?php echo $price_err; ?></span> -->
+            </div>
+            <div>
+                <br>
+                <input type="submit" name="btnSubmit" value="Submit" id="postButton">
+                <a href="../admin.php">Cancel</a>
+            </div>
+    </div>
+</div>
     </form>
     <?php
 
