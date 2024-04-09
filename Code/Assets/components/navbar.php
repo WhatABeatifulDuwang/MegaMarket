@@ -33,6 +33,7 @@ if (isset($_POST['logout'])) {
     </div>
     <div class="top-right-buttons">
         <button class="login-button" onclick="gotoLoginPage();">Login</button>
+        
         <img src="Assets/images/shopping-cart.png" class="shopping-cart" onclick="toggleShoppingCart();">
     </div>
 </header>

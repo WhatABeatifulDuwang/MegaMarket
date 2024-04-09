@@ -44,6 +44,7 @@
 
 <?php
 include "Assets/components/navbar.php";
+require_once "shoppingcart/functions.php";
 
 // If the user clicked the add to cart button on the product page we can check for the form data
 if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['product_id']) && is_numeric($_POST['quantity'])) {
@@ -133,8 +134,9 @@ if ($products_in_cart) {
 }
 ?>
 
-<?php /*=template_header('Cart')*/?>
-
+<?=template_header('cart')?>
+<link rel="stylesheet" href="Assets/Styles/cart-style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 <div class="cart content-wrapper">
     <h1>Shopping Cart</h1>
     <form action="index.php?page=cart" method="post">
@@ -187,4 +189,4 @@ if ($products_in_cart) {
     </form>
 </div>
 
-<?//=template_footer()?>
+<?=template_footer()?>
