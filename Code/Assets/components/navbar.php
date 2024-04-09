@@ -29,13 +29,7 @@ if (isset($_POST['logout'])) {
         </nav>
     </div>
     <div class="top-right-buttons">
-<<<<<<< Updated upstream
-        <button class="login-button" onclick="gotoLoginPage();">Login</button>
-        
-        <img src="Assets/images/shopping-cart.png" class="shopping-cart" onclick="toggleShoppingCart();">
-=======
         <a href=login.php><button class="login-button">Login</button></a>
         <a href="cart.php"><img src="Assets/images/shopping-cart.png" class="shopping-cart"></a>
->>>>>>> Stashed changes
     </div>
 </header>
