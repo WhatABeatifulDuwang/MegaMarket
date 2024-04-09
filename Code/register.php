@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = getUserByEmailAndPassword($currentUser->getEmailAddress(), $currentUser->getPassword());
         setFirstAccountAsAdmin();
         $_SESSION["user"] = $user;
-        $_SESSION["user"]["id"] = $user["id"];
+        $_SESSION["user"]["id"] = getUserIdByEmail($currentUser->getEmailAddress());
         header("Location: index.php");
     }
 }
