@@ -14,136 +14,43 @@
     <div class="categories">
         <h2>Categories</h2>
         <ul class="category-list">
-            <li>Bakery</li>
-            <li>Beverages</li>
-            <li>Dairy</li>
-            <li>Fish</li>
-            <li>Fruit</li>
-            <li>Meat</li>
-            <li>Snacks</li>
-            <li>Sweets</li>
-            <li>Vegetables</li>
+            <li><a href="product-page.php">All</a></li>
+            <li><a href="product-page.php?category=Bakery">Bakery</a></li>
+            <li><a href="product-page.php?category=Beverages">Beverages</a></li>
+            <li><a href="product-page.php?category=Dairy">Dairy</a></li>
+            <li><a href="product-page.php?category=Fish">Fish</a></li>
+            <li><a href="product-page.php?category=Fruit">Fruit</a></li>
+            <li><a href="product-page.php?category=Meat">Meat</a></li>
+            <li><a href="product-page.php?category=Snacks">Snacks</a></li>
+            <li><a href="product-page.php?category=Sweets">Sweets</a></li>
+            <li><a href="product-page.php?category=Vegetables">Vegetables</a></li>
         </ul>
     </div>
     <main class="product-container">
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-img-placeholder"></div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="price">€ 10.99</p>
-            </div>
-        </div>
-        <div class="pagination-buttons">
-            <button onclick="gotoPage(1)">1</button>
-            <button onclick="gotoPage(2)">2</button>
-            <button onclick="gotoPage(3)">3</button>
-        </div>
+        <?php
+
+        $category = isset($_GET['category']) ? $_GET['category'] : null;
+        $products = getAllProducts($category);
+
+        if (!empty($products)) {
+            foreach ($products as $product) {
+                echo "<div class='product-card'>";
+                echo "<div class='product-img'><img src='Assets/product-images/" . $product["id"] . ".png' alt='Product Image'></div>";
+                echo "<div class='product-info'>";
+                echo "<h2>" . $product["name"] . "</h2>";
+                echo "<h3>" . $product["description"] . "</h3>";
+                echo "<p class='price'>€ " . $product["price"] . "</p>";
+                echo "</div>";
+                echo "</div>";
+            }
+        } else {
+            echo "No products found";
+        }
+        ?>
     </main>
+    <div class="pagination-buttons">
+
+    </div>
 </body>
 
 </html>

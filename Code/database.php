@@ -232,3 +232,21 @@ function getTotalProducts() {
         return 0;
     }
 }
+
+// Gets all the products
+function getAllProducts($category = null) {
+    global $conn;
+
+    try {
+        if ($category) {
+            $stmt = $conn->prepare("SELECT * FROM products WHERE type = :category");
+            $stmt->bindParam(':category', $category);
+            $stmt->execute();
+        } else {
+            $stmt = $conn->query("SELECT * FROM products");
+        }
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return array();
+    }
+}

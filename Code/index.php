@@ -18,7 +18,7 @@
         <div class="center-items">
             <h2>Whaterver you need</h2>
             <h2>We might have it!</h2>
-            <button class="check-product-button" onclick="gotoProductPage();">Check our products</button>
+            <a href="product-page.php"><button class="check-product-button">Check our products</button></a>
         </div>
         <div class="product-cards">
             <div class="product-card">
