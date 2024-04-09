@@ -22,13 +22,16 @@
         </div>
         <div class="product-cards">
             <div class="product-card">
-                <img class="product-image" src="Assets/images/placeholder.png" alt="Random Product">
+                <?php $totalProducts = getTotalProducts();
+                $randomProductId = rand(1, $totalProducts);
+                $product = getProductById($randomProductId); ?>
+                <img class="product-image" src="<?php echo "Assets/product-images/$randomProductId.png"; ?>"
+                    alt="Random Product">
                 <h3 class="product-title">
-                    <?php $totalProducts = getTotalProducts();
-                    $randomProductId = rand(1, $totalProducts);
-                    $product = getProductById($randomProductId);
+                    <?php
                     if ($product) {
                         echo "<h2>{$product['name']}</h2>";
+                        echo "<h3>{$product['description']}</h2>";
                         echo "<p>€   {$product['price']}</p>";
                     } else {
                         echo "Product with ID $randomProductId not found!";
@@ -36,13 +39,16 @@
                 </h3>
             </div>
             <div class="product-card">
-                <img class="product-image" src="Assets/images/placeholder.png" alt="Random Product">
+                <?php $totalProducts = getTotalProducts();
+                $randomProductId = rand(1, $totalProducts);
+                $product = getProductById($randomProductId); ?>
+                <img class="product-image" src="<?php echo "Assets/product-images/$randomProductId.png"; ?>"
+                    alt="Random Product">
                 <h3 class="product-title">
-                    <?php $totalProducts = getTotalProducts();
-                    $randomProductId = rand(1, $totalProducts);
-                    $product = getProductById($randomProductId);
+                    <?php
                     if ($product) {
                         echo "<h2>{$product['name']}</h2>";
+                        echo "<h3>{$product['description']}</h2>";
                         echo "<p>€   {$product['price']}</p>";
                     } else {
                         echo "Product with ID $randomProductId not found!";
@@ -50,13 +56,16 @@
                 </h3>
             </div>
             <div class="product-card">
-                <img class="product-image" src="Assets/images/placeholder.png" alt="Random Product">
+                <?php $totalProducts = getTotalProducts();
+                $randomProductId = rand(1, $totalProducts);
+                $product = getProductById($randomProductId); ?>
+                <img class="product-image" src="<?php echo "Assets/product-images/$randomProductId.png"; ?>"
+                    alt="Random Product">
                 <h3 class="product-title">
-                    <?php $totalProducts = getTotalProducts();
-                    $randomProductId = rand(1, $totalProducts);
-                    $product = getProductById($randomProductId);
+                    <?php
                     if ($product) {
                         echo "<h2>{$product['name']}</h2>";
+                        echo "<h3>{$product['description']}</h2>";
                         echo "<p>€   {$product['price']}</p>";
                     } else {
                         echo "Product with ID $randomProductId not found!";

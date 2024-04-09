@@ -33,6 +33,7 @@ body {
 }
 
 .product-cards {
+    transform: translateY(-550px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,7 +42,6 @@ body {
 }
 
 .product-card {
-    transform: translateY(-500px);
     flex-basis: calc(33% - 16px);
     margin-bottom: 16px;
     background-color: #fff;
