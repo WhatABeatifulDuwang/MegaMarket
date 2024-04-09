@@ -34,14 +34,17 @@
 
         if (!empty($products)) {
             foreach ($products as $product) {
-                echo "<div class='product-card'>";
-                echo "<div class='product-img'><img src='Assets/product-images/" . $product["id"] . ".png' alt='Product Image'></div>";
-                echo "<div class='product-info'>";
-                echo "<h2>" . $product["name"] . "</h2>";
-                echo "<h3>" . $product["description"] . "</h3>";
-                echo "<p class='price'>€ " . $product["price"] . "</p>";
-                echo "</div>";
-                echo "</div>";
+                ?>
+                <a href="product-info.php?id=<?php echo $product['id']; ?>" class="product-card">
+                    <div class='product-img'><img src='Assets/product-images/<?php echo $product["id"]; ?>.png'
+                            alt='Product Image'></div>
+                    <div class='product-info'>
+                        <h2><?php echo $product["name"]; ?></h2>
+                        <h3><?php echo $product["description"]; ?></h3>
+                        <p class='price'>€ <?php echo $product["price"]; ?></p>
+                    </div>
+                </a>
+                <?php
             }
         } else {
             echo "No products found";
