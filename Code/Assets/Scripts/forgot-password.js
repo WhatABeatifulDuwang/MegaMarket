@@ -1,4 +1,3 @@
 function hideForm() {
-    let form = document.getElementById('form');
-    form.style.display = 'none';
+    document.getElementById("form").style.display = "none";
 }
