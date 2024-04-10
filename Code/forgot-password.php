@@ -35,12 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errorTextTag = "<div style='color:red' id='errorTextTag'>There is no email like this in our records. Please check if the email is correct and try again</div>";
         echo $errorTextTag;
     }
-    if (!empty($user) && !empty($_POST['password'])){
-        $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        changeUserPassword($user['id'], $hashedPassword);
-        $successTag = "<div style='color:green' id='successTag'>Password has been updated successfully!</div>";
-        echo $successTag;
-    }
 }
 ?>
 </div>
@@ -57,6 +51,13 @@ if (!empty($emailCorrect)){
             <input type='password' id='password' name='password' placeholder='Enter your new password'><br>
             <input id='ChangeButton' type='submit' value='Confirm' name='Confirm'>
             </form>";
+}
+
+if (!empty($user) && !empty($_POST['password'])){
+    $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    changeUserPassword($user['id'], $hashedPassword);
+    $successTag = "<div style='color:green' id='successTag'>Password has been updated successfully!</div>";
+    echo $successTag;
 }
 ?>
 </div>

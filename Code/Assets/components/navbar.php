@@ -6,7 +6,7 @@ if ($_SESSION){
 }
 
 if (isset($_POST['logout'])) {
-    unset($_SESSION["user"]["id"]);
+    unset($_SESSION['user']);
     header('Location: index.php');
     exit();
 }
@@ -29,7 +29,16 @@ if (isset($_POST['logout'])) {
         </nav>
     </div>
     <div class="top-right-buttons">
-        <a href=login.php><button class="login-button">Login</button></a>
+        <?php
+        if (!$_SESSION){
+            echo "<a href=login.php><button class='login-button'>Login</button></a>";
+        }
+        if ($_SESSION){
+            echo "<form method='post'>
+                <input class='login-button' type='submit' name='logout' value='Logout'>
+                </form>";
+        }
+        ?>
         <a href="cart.php"><img src="Assets/images/shopping-cart.png" class="shopping-cart"></a>
     </div>
 </header>
