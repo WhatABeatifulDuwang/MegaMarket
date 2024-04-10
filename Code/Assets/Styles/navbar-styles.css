@@ -10,8 +10,7 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    margin-right: 16px;
-    margin-left: 91vw;
+    right: 2%;
 }
 
 .login-button {
