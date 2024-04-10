@@ -87,24 +87,3 @@ body {
 .category-list li:hover {
   background-color: #1EB0BF;
 }
-
-.pagination-buttons {
-  transform: translateY(-1.5vh);
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.pagination-buttons button {
-  background-color: #3B6FEE;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  margin: 0 5px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.pagination-buttons button:hover {
-  background-color: #1EB0BF;
-}
