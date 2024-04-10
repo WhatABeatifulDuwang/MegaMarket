@@ -49,3 +49,8 @@ INSERT INTO `products` (`id`, `name`, `type`, `price`, `description`, `quantity`
 ('48', 'Parmesan cheese', 'dairy', '6.49', 'Sharp Parmesan cheese.', '1', NULL),
 ('49', 'Cod fillet', 'fish', '9.99', 'Flaky cod fillet.', '1', NULL),
 ('50', 'Popcorn', 'snacks', '2.19', 'Classic popcorn for movie nights.', '1', NULL);
+('51', 'Strawberries', 'fruit', '2.49', 'Bright red of beauty.', '5', NULL);
+('52', 'Nutella biscuits', 'sweets', '1.89', 'Nutella biscuits are made according to a delicious recipe.', '5', NULL);
+('53', 'Whole grain bread', 'bakery', '0.99', 'Choose the healthy side.', '5', NULL);
+('54', 'Shrimps', 'fish', '3.39', 'The juiciest kind.', '5', NULL);
+('55', 'Oreo cereal', 'snacks', '3.09', 'Very delicious at all times of the day.', '5', NULL);

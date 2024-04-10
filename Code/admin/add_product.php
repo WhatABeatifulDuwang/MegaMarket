@@ -1,8 +1,8 @@
 <?php
 require_once '../database.php';
 
-$name = $type = $description = $price = "";
-$name_err = $price_err = "";
+$name = $type = $description = $quantity = $price = "";
+$name_err = $price_err = $quantity_err = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate name
@@ -23,22 +23,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else{
         $price = trim($_POST["price"]);
     }
+    if(!is_int(trim($_POST["quantity"]))){
+        $quantity_err = "Please enter a positive integer value with no decimal.";
+    }
+    else{
+        $quantity = trim($_POST["quantity"]);
+    }
     
     // Check input errors before inserting in database
     if(empty($name_err) && empty($price_err)){
-        $sql = "INSERT INTO products (name, type, description, price) VALUES (:name, :type, :description, :price)";
+        $sql = "INSERT INTO products (name, type, description, quantity, price) VALUES (:name, :type, :description, :quantity, :price)";
 
         if($stmt = $conn->prepare($sql)){
             
             $stmt->bindParam(":name", $param_name);
             $stmt->bindParam(":type", $param_type);
             $stmt->bindParam(":description", $param_description);
+            $stmt->bindParam(":quantity", $param_quantity);
             $stmt->bindParam(":price", $param_price);
             
             //parameters
             $param_name = $name;
             $param_type = $_POST["type"];
             $param_description = $_POST["description"];
+            $param_quantity = $quantity;
             $param_price = $price;
             
             if($stmt->execute()){
@@ -78,11 +86,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>    
                 <div>
                     <label>Type:</label><br>
-                    <input type="text"><?php echo $type; ?></input>
+                    <input type="text" name="type"><?php echo $type; ?></input>
                 </div>
                 <div>
                     <label>Description:</label><br>
-                    <textarea name="description"><?php echo $description; ?></textarea>
+                    <input class="admin-description" name="description"><?php echo $description; ?></input>
+                </div>
+                <div>
+                    <label>Quantity:</label><br>
+                    <input type="text" name="quantity" value="<?php echo $quantity; ?>">
+                    <span><?php echo $quantity_err; ?></span>
                 </div>
                 <div>
                     <label>Price: (€/Euro will be added automatically!)</label><br>

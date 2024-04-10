@@ -49,7 +49,7 @@ if(isset($_GET['id'])) {
             </div>
             <div>
                 <label>Description:</label><br>
-                <textarea name="description"><?php echo $data->description; ?></textarea>
+                <input class="admin-description" name="description" value="<?php echo $data->description; ?>">
             </div>
             <div>
                 <label>Price: (€/Euro will be added automatically!)</label><br>

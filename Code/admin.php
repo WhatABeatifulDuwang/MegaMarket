@@ -77,18 +77,19 @@ catch(PDOException $e) {
 unset($pdo);
 
 try {
-    $sql = "SELECT id, name, type, description, price FROM products";
+    $sql = "SELECT id, name, type, description, quantity, price FROM products";
     $stmt = $conn->query($sql);
 
     if($stmt->rowCount() > 0) {
         echo "<h3>Products</h3>";
-        echo "<a class='add' href='admin/add_product.php'>Add New Product</a><br/><br/>";
+        echo "<a class='add-btn' href='admin/add_product.php'>Add New Product</a><br/><br/>";
         echo "<table>";
         echo "<tr>";
         echo "<th>ID</th>";
         echo "<th>Name</th>";
         echo "<th class='admin-table' width='5%'><a href='http://www.google.com'>Type</th>";
         echo "<th>Description</th>";
+        echo "<th>Quantity</th>";
         echo "<th>Price</th>";
         echo "<th>Action</th>";
         echo "</tr>";
@@ -99,6 +100,7 @@ try {
             echo "<td>" . $row['name'] . "</td>";
             echo "<td>" . $row['type'] . "</td>";
             echo "<td>" . $row['description'] . "</td>";
+            echo "<td>" . $row['quantity'] . "</td>";
             echo "<td>€" . $row['price'] . "</td>";
             echo "<td>";
             echo "<a href='admin/edit_product.php?id=". $row['id'] ."'>Edit</a>";
