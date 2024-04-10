@@ -28,7 +28,7 @@ if (!isCurrentUserAdmin($uid) && $uid != null) {
 }
 
 try {
-    $sql = "SELECT id, first_name, surname, email_address, postal_code, house_number, additional, phone_number FROM users";
+    $sql = "SELECT * FROM users";
     global $conn;
     $stmt = $conn->query($sql);
     
@@ -41,6 +41,7 @@ try {
         echo "<th>Email</th>";
         echo "<th>Address</th>";
         echo "<th>Phone</th>";
+        echo "<th>Admin</th>";
         echo "</tr>";
         
         while($row = $stmt->fetch()) {
@@ -50,6 +51,7 @@ try {
             echo "<td>" . $row['email_address'] . "</td>";
             echo "<td>" . $row['postal_code'] . ', ' . $row['house_number'] . $row['additional'] . "</td>";
             echo "<td>" . $row['phone_number'] . "</td>";
+            echo "<td>" . $row['admin'] . "</td>";
             echo "</tr>";
         }
         
@@ -74,7 +76,7 @@ catch(PDOException $e) {
 //     }
 // }
 
-unset($pdo);
+// unset($pdo);
 
 try {
     $sql = "SELECT id, name, type, description, quantity, price FROM products";
@@ -91,7 +93,7 @@ try {
         echo "<th>Description</th>";
         echo "<th>Quantity</th>";
         echo "<th>Price</th>";
-        echo "<th>Action</th>";
+        echo "<th class='admin-action-th'>Action</th>";
         echo "</tr>";
         
         while($row = $stmt->fetch()) {
@@ -103,9 +105,11 @@ try {
             echo "<td>" . $row['quantity'] . "</td>";
             echo "<td>€" . $row['price'] . "</td>";
             echo "<td>";
-            echo "<a href='admin/edit_product.php?id=". $row['id'] ."'>Edit</a>";
+            echo '<div class="admin-actions">';
+            echo "<a class='admin-edit' href='admin/edit_product.php?id=". $row['id'] ."'>Edit</a>";
             echo " | ";
-            echo "<a href='admin/delete_product.php?id=". $row['id'] ."' onclick='return confirm(\"Delete this product?\");'>Delete</a>";
+            echo "<a class='admin-delete' href='admin/delete_product.php?id=". $row['id'] ."' onclick='return confirm(\"Delete this product?\");'>Delete</a>";
+            echo '</div>';
             echo "</td>";
             echo "</tr>";
         }

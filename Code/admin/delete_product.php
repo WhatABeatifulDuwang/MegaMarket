@@ -1,3 +1,4 @@
+<title>Deleting...</title>
 <?php
 
 require_once '../database.php';
@@ -11,8 +12,6 @@ if(isset($_GET['id'])) {
     $stmt->execute(["id" => $id]);
 
     header("location: ../admin.php");
-    // confirm("has been deleted");
     exit();
 }
 ?>
-<title>Deleting...</title>

@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else{
         $price = trim($_POST["price"]);
     }
-    if(!is_int(trim($_POST["quantity"]))){
+    if(!is_numeric(trim($_POST["quantity"]))){
         $quantity_err = "Please enter a positive integer value with no decimal.";
     }
     else{
@@ -93,8 +93,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <input class="admin-description" name="description"><?php echo $description; ?></input>
                 </div>
                 <div>
-                    <label>Quantity:</label><br>
-                    <input type="text" name="quantity" value="<?php echo $quantity; ?>">
+                    <label>Quantity: (Zero by default)</label><br>
+                    <input type="text" name="quantity" value="<?php echo ($quantity); ?>">
                     <span><?php echo $quantity_err; ?></span>
                 </div>
                 <div>

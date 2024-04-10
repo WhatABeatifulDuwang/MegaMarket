@@ -46,21 +46,61 @@ tr:hover {
     max-height: 75px;
 }
 
+.admin-action-th {
+    text-align: center;
+}
+.admin-actions {
+    text-align: center;
+}
+.admin-actions:hover {
+    animation-name: floating;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    
+}
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    25%  { transform: translate(0, 1px); }
+    50%  { transform: translate(0, -0px); }
+    75%   { transform: translate(0, -1px); }
+    100% { transform: translate(0,  0px); }
+}
+
+.admin-edit{
+    color: #2255dd;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+.admin-edit:hover {
+    color: blue;
+}
+  
+.admin-delete {
+    color: #cc5522;
+}
+
+.admin-delete:hover {
+    color: red;
+}
+
 a {
     text-decoration: none;
 }
 
 .add-btn {
-    border: solid 1px black;
-    border-radius: 10%;
-    border-width: 0.1em;
-    width: 2em;
-    height: 1.3em;
+    border: solid 3px black;
     user-select: none;
     font-size: 1.3em;
-    font: 1.3em caption;
+    color: #eee;
+    background-color: #2255dd;
 }
 
+.add-btn:hover {
+    border: solid 1px blue;
+    color: white;
+    background-color: #1133aa;
+}
 
 .container {
     display: flex;
@@ -75,11 +115,11 @@ a {
     flex-direction: column;
     margin-left: 5%;
     padding: 10px;
-    width: 50%;
+    width: 60%;
 }
 
 .form input {
-    width: 90%;
+    width: 50%;
     padding: 10px;
     border-radius: 24px;
     margin-bottom: 5px;
@@ -94,6 +134,7 @@ a {
 
 #postButton {
     width: 20%;
+    cursor: pointer;
 }
 
 hr{

@@ -5,9 +5,9 @@ require_once '../database.php';
 if(isset($_POST['btnSubmit'])) {
     //echo "<pre>".print_r($_POST, true)."</pre>"; 
 
-    foreach($_POST as $veld=>$waarde)  $$veld = $waarde;
+    foreach($_POST as $field=>$edit_value)  $$field = $edit_value;
 
-    $sql = "UPDATE products SET name = '$name', `type` = '$type', description = '$description', price = '$price' WHERE id = :id";
+    $sql = "UPDATE products SET name = '$name', `type` = '$type', description = '$description', quantity = '$quantity', price = '$price' WHERE id = :id";
     $stmt = $conn->prepare($sql);
 
     $stmt->execute([
@@ -40,20 +40,24 @@ if(isset($_GET['id'])) {
             <input type="hidden" name="id" value="<?php echo $data->id; ?>">
             <div>
                 <label>Name:</label><br>
-                <input type="text" name="name" value="<?php echo $data->name; ?>">
+                <input type="text" name="name" value="<?php echo $data->name; ?>" required>
                 <!-- <span><?php echo $name_err; ?></span> -->
             </div>    
             <div>
                 <label>Type:</label><br>
-                <input type="text" name="type" value="<?php echo $data->type; ?>">
+                <input type="text" name="type" value="<?php echo $data->type; ?>" required>
             </div>
             <div>
                 <label>Description:</label><br>
                 <input class="admin-description" name="description" value="<?php echo $data->description; ?>">
             </div>
             <div>
+                <label>Quantity: (Zero by default)</label><br>
+                <input type="text" name="quantity" value="<?php echo $data->quantity; ?>" required>
+            </div>
+            <div>
                 <label>Price: (€/Euro will be added automatically!)</label><br>
-                <input type="text" name="price" value="<?php echo $data->price; ?>">
+                <input type="text" name="price" value="<?php echo $data->price; ?>" required>
                 <!-- <span><?php echo $price_err; ?></span> -->
             </div>
             <div>
