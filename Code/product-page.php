@@ -13,16 +13,37 @@
     <div class="categories">
         <h2>Categories</h2>
         <ul class="category-list">
-            <li><a href="product-page.php">All</a></li>
-            <li><a href="product-page.php?category=Bakery">Bakery</a></li>
-            <li><a href="product-page.php?category=Beverages">Beverages</a></li>
-            <li><a href="product-page.php?category=Dairy">Dairy</a></li>
-            <li><a href="product-page.php?category=Fish">Fish</a></li>
-            <li><a href="product-page.php?category=Fruit">Fruit</a></li>
-            <li><a href="product-page.php?category=Meat">Meat</a></li>
-            <li><a href="product-page.php?category=Snacks">Snacks</a></li>
-            <li><a href="product-page.php?category=Sweets">Sweets</a></li>
-            <li><a href="product-page.php?category=Vegetables">Vegetables</a></li>
+            <a href="product-page.php">
+                <li>All</li>
+            </a>
+            <a href="product-page.php?category=Bakery">
+                <li>Bakery</li>
+            </a>
+            <a href="product-page.php?category=Beverages">
+                <li>Beverages</li>
+            </a>
+            <a href="product-page.php?category=Dairy">
+                <li>Dairy</li>
+            </a>
+            <a href="product-page.php?category=Fish">
+                <li>Fish</li>
+            </a>
+            <a href="product-page.php?category=Fruit">
+                <li>Fruit</li>
+            </a>
+            <a href="product-page.php?category=Meat">
+                <li>Meat</li>
+            </a>
+            <a href="product-page.php?category=Snacks">
+                <li>Snacks</li>
+            </a>
+            <a href="product-page.php?category=Sweets">
+                <li>Sweets</li>
+            </a>
+            <a href="product-page.php?category=Vegetables">
+                <li>Vegetables</li>
+            </a>
+
         </ul>
     </div>
     <main class="product-container">

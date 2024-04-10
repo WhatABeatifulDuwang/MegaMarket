@@ -78,3 +78,14 @@ body {
 .check-product-button:hover {
     background-color: #1EB0BF;
 }
+
+@media only screen and (max-width: 1920px) {
+
+    .center-items {
+        transform: translateY(-350%);
+    }
+
+    .product-cards {
+        transform: translateY(-110%);
+    }
+}

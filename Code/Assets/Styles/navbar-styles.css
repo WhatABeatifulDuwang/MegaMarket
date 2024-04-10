@@ -60,12 +60,21 @@
 .nav-items {
     display: flex;
     list-style: none;
-    margin: 0;
-    padding: 0;
+	text-decoration: none;
+	color: #555555;
+	padding: 10px 10px;
+	margin: 0 10px;
+}
+.nav-items a {
+	text-decoration: none;
+	color: #555555;
+	padding: 10px 10px;
+	margin: 0 10px;
 }
 
-.nav-items:hover {
+.nav-items a:hover {
     cursor: pointer;
+    border-bottom: 1px solid #aaa;
 }
 
 .nav-item {
