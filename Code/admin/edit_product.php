@@ -3,7 +3,6 @@
 require_once '../database.php';
 
 if(isset($_POST['btnSubmit'])) {
-    //echo "<pre>".print_r($_POST, true)."</pre>"; 
 
     foreach($_POST as $field=>$edit_value)  $$field = $edit_value;
 
@@ -14,12 +13,12 @@ if(isset($_POST['btnSubmit'])) {
         "id" => $id
     ]);
 
-    // keer terug naar admin.php
+    // back to admin.php
     header("location: ../admin.php");
 }
 
 if(isset($_GET['id'])) {
-    // haal het record
+    // bring the record over to the admin
 
     $sql = "SELECT * FROM products WHERE id = :id";
     $stmt = $conn->prepare($sql);
@@ -37,8 +36,9 @@ if(isset($_GET['id'])) {
         <hr>
         <p>Edit current data.</p>
         <form action="" method="post">
+
             <input type="hidden" name="id" value="<?php echo $data->id; ?>">
-            <div>
+            <div>              
                 <label>Name:</label><br>
                 <input type="text" name="name" value="<?php echo $data->name; ?>" required>
                 <!-- <span><?php echo $name_err; ?></span> -->

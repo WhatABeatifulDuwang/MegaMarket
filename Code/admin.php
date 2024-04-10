@@ -10,16 +10,11 @@
 <?php include "Assets/components/navbar.php";?>
 <h1 style="text-align: center;">Welcome to Admin!</h1>
 <hr>
-    <!-- <nav>
-        <ul>
-            <li><a href="add_product.php">Manage Products</a></li>
-            Add more navigation items as neede
-        </ul>
-    </nav> -->
 <?php
 require_once 'database.php'; // database connectie
 $uid = $_SESSION["user"]["id"];
 
+// Checks if the user is an Admin or not
 if (!isCurrentUserAdmin($uid) && $uid != null) {
     echo ("<script>
     window.alert('You do not have access to this place');
@@ -28,6 +23,7 @@ if (!isCurrentUserAdmin($uid) && $uid != null) {
     exit();
 }
 
+// Users are located down here
 try {
     $sql = "SELECT * FROM users";
     global $conn;
@@ -67,18 +63,7 @@ catch(PDOException $e) {
     die("ERROR: Could not be able to execute $sql. " . $e->getMessage());
 }
 
-// if (isset($_GET['function'])) {
-//     $function = $_GET['function'];
-//     switch ($function) {
-//         case 'add_product':
-//             require 'add_product.php';
-//             break;
-//         // Handle other cases
-//     }
-// }
-
-// unset($pdo);
-
+// Products are located down here
 try {
     $sql = "SELECT id, name, type, description, quantity, price FROM products";
     $stmt = $conn->query($sql);

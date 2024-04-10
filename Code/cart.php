@@ -1,47 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Winkelwagen</title>
-    <style>
-        .container{
-            width: 725px;
-            height: 500px;
-            border: solid 1px black;
-            text-align: center;
-        }
-        .size{
-            font-size: 3em;
-        }
-        .components{
-            text-align: center;
-            position: static;
-        }
-        table{
-            text-align: center;
-            margin: 10px;
-            padding: 12px 22px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1 class="size">Producten</h1>
-        <hr>
-        <div class="components">
-            <table>
-                <tr>
-                    <td>product</td>
-                    <td>product</td>
-                    <td>product</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</body>
-</html> -->
-
 <?php
 include "Assets/components/navbar.php";
 require_once "shoppingcart/functions.php";
@@ -50,13 +6,10 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
     $product_id = (int)$_POST['product_id'];
     $quantity = (int)$_POST['quantity'];
 
-    // SQL statement
     $stmt = $conn->prepare('SELECT * FROM products WHERE id = ?');
     $stmt->execute([$_POST['product_id']]);
 
-    // Fetch the product from the database and return the result as an Array
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
-    // Check if the product exists
 
     if ($product && $quantity > 0) {
         // Product exists in database, now we can create/update the session variable for the cart
@@ -69,22 +22,18 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
                 $_SESSION['cart'][$product_id] = $quantity;
             }
         } else {
-            // There are no products in cart, this will add the first product to cart
             $_SESSION['cart'] = array($product_id => $quantity);
         }
     }
-    // Prevent form resubmission...
     header('location: index.php?page=cart');
     exit;
 }
 
-
-// Remove product from cart, check for the URL param "remove", this is the product id, make sure it's a number and check if it's in the cart
+// Remove product from cart, check for the URL param "remove", this is the product id
 if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['cart']) && isset($_SESSION['cart'][$_GET['remove']])) {
     // Remove the product from the shopping cart
     unset($_SESSION['cart'][$_GET['remove']]);
 }
-
 
 // Update product quantities in cart if the user clicks the "Update" button on the shopping cart page
 if (isset($_POST['update']) && isset($_SESSION['cart'])) {
@@ -112,17 +61,14 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 $products = array();
 $subtotal = 0.00;
-// If there are products in cart
 
+// If there are products in cart
 if ($products_in_cart) {
     
     $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
     $stmt = $conn->prepare('SELECT * FROM products WHERE id IN (' . $array_to_question_marks . ')');
-    // We only need the array keys, not the values, the keys are the id's of the products
     $stmt->execute(array_keys($products_in_cart));
-    // Fetch the products from the database and return the result as an Array
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // Calculate the subtotal
     foreach ($products as $product) {
         $subtotal += (float)$product['price'] * (int)$products_in_cart[$product['id']];
     }
@@ -153,12 +99,12 @@ if ($products_in_cart) {
                 <?php foreach ($products as $product): ?>
                 <tr>
                     <td class="img">
-                        <a href="product.php?page=id=<?=$product['id']?>">
+                        <a href="product-info.php?page=product&id=<?=$product['id']?>">
                         <img src="Assets/product-images/<?= $product['id'] ?>.png" width="50" height="50" alt="<?= $product['name'] ?>">
                         </a>
                     </td>
                     <td>
-                        <a href="index.php?page=product&id=<?=$product['id']?>"><?=$product['name']?></a>
+                        <a href="product-info.php?page=product&id=<?=$product['id']?>"><?=$product['name']?></a>
                         <br>
                         <a href="cart.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>
                     </td>
@@ -177,9 +123,9 @@ if ($products_in_cart) {
             <span class="price">&euro;<?=$subtotal?></span>
         </div>
         <div class="buttons">
-            <input type="submit" value="Update" name="update">
+            <input type="submit" value="Remove all" name="update">
             <?php unset($_SESSION['cart']) ?>
-            <input type="submit" value="Place Order" name="placeorder">
+            <input type="submit" value="Place Order" name="placeorder" href='shoppingcart/placeorder.php'>
         </div>
     </form>
 </div>
