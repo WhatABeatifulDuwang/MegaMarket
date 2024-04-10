@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Assets/Styles/product-page-style.css">
-    <script src="Assets/Scripts/product-page-script.js"></script>
     <title>Products</title>
 </head>
 
@@ -51,9 +50,6 @@
         }
         ?>
     </main>
-    <div class="pagination-buttons">
-
-    </div>
 </body>
 
 </html>
