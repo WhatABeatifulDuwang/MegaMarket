@@ -22,7 +22,7 @@ $uid = $_SESSION["user"]["id"];
 if (!isCurrentUserAdmin($uid) && $uid != null) {
     echo ("<script>
     window.alert('You do not have access to this place');
-    window.location.href= '../pages/home.php';
+    window.location.href= 'index.php';
     </script>");
     exit();
 }
@@ -82,7 +82,7 @@ try {
 
     if($stmt->rowCount() > 0) {
         echo "<h3>Products</h3>";
-        echo "<a href='admin/add_product.php'>Add New Product</a><br/><br/>";
+        echo "<a class='add' href='admin/add_product.php'>Add New Product</a><br/><br/>";
         echo "<table>";
         echo "<tr>";
         echo "<th>ID</th>";

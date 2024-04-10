@@ -35,7 +35,7 @@ if (isset($_GET['id'])) {
         <span class="price">
             &euro;<?= $product['price'] ?>
         </span>
-        <form action="index.php?page=cart" method="post">
+        <form action="cart.php?page=cart" method="post">
             <input type="number" name="quantity" value="1" min="1" max="<?= $product['quantity'] ?>"
                 placeholder="Quantity" required>
             <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
