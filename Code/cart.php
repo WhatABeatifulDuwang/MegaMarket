@@ -11,7 +11,7 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
 
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($product && $quantity > 0) {
+    if ($product && $quantity > 0 && !empty($_SESSION['user'])) {
         // Product exists in database, now we can create/update the session variable for the cart
         if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
             if (array_key_exists($product_id, $_SESSION['cart'])) {
@@ -25,8 +25,12 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
             $_SESSION['cart'] = array($product_id => $quantity);
         }
     }
-    header('location: index.php?page=cart');
-    exit;
+    else {
+        echo "<script>
+        alert('Please login first');
+        window.location.replace('login.php');
+        </script>";
+    }
 }
 
 // Remove product from cart, check for the URL param "remove", this is the product id
