@@ -54,7 +54,7 @@
         if ($searchBarInput !== null) {
             $products = searchProducts($searchBarInput);
         } else {
-            $products = getAllProducts($categoy);
+            $products = getAllProducts($category);
         }
 
         if (!empty($products)) {
