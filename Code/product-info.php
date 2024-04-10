@@ -4,7 +4,7 @@ include "Assets/components/navbar.php";
 // Check to make sure the id parameter is specified in the URL
 if (isset($_GET['id'])) {
     // Prepare statement and execute, prevents SQL injection
-    $stmt = $conn->prepare('SELECT id, name, description, price, quantity, img FROM products WHERE id = ?');
+    $stmt = $conn->prepare('SELECT * FROM products WHERE id = ?');
     $stmt->execute([$_GET['id']]);
     // Fetch the product from the database and return the result as an Array
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -24,9 +24,10 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Assets/Styles/??">
+    <link rel="stylesheet" href="Assets/Styles/cart-style.css">
     <title>Mega Market</title>
 </head>
+<main>
 <div class="product content-wrapper">
     <img src="Assets/product-images/<?= $product['id'] ?>.png" width="500" height="500" alt="<?= $product['name'] ?>">
     <div>
@@ -45,5 +46,6 @@ if (isset($_GET['id'])) {
         </div>
     </div>
 </div>
+</main>
 
 </html>
