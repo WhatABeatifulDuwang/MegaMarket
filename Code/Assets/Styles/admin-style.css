@@ -8,28 +8,34 @@ body {
     background-color: #f5fafe;
     overflow-x: hidden;
 }
+
 table {
-    width: 100%;    
+    width: 80%;    
     border-collapse: collapse;
     text-decoration: none;
     background-color: white;
     border: black 3px solid;
-    box-shadow: 3px 15px #eee;
+    box-shadow: 5px 15px #eee;
+    /* margin-bottom: 10%; */
+    margin-left: 10%;
 }
 
 th, td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-    border-left: 1px solid #ddd;
+    border-left: 1px dashed #ddd;
 }
-
-/* tr {
-    cursor: pointer;
-} */
 
 tr:hover {
     background-color: #f5f5f5;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-left: 10%;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
 }
 
 .admin-table {
@@ -49,9 +55,12 @@ tr:hover {
 .admin-action-th {
     text-align: center;
 }
+
 .admin-actions {
     text-align: center;
+    user-select: none;
 }
+
 .admin-actions:hover {
     animation-name: floating;
     animation-duration: 1.5s;
@@ -89,17 +98,17 @@ a {
 }
 
 .add-btn {
-    border: solid 3px black;
+    border: dashed 1px blue;
     user-select: none;
     font-size: 1.3em;
-    color: #eee;
-    background-color: #2255dd;
+    color: white;
+    background: linear-gradient(to right, #3B6FEE, #1EB0BF);
+    margin-left: 10%;
 }
 
 .add-btn:hover {
-    border: solid 1px blue;
-    color: white;
-    background-color: #1133aa;
+    border: dashed 3px blue;
+    background: linear-gradient(to right, #1EB0BF, #3B6FEE);
 }
 
 .container {
@@ -135,8 +144,26 @@ a {
 #postButton {
     width: 20%;
     cursor: pointer;
+    font-size: 14px;
+}
+
+#postButton:hover {
+    color: 333;
+    background-color: #eef;
+    
 }
 
 hr{
     width: 100%;
+}
+
+.custom-hr {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 35px;
+    border: 2px dotted gray;
+}
+
+.emptyMessage {
+    margin-left: 10%;
 }

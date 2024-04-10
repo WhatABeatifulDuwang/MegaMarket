@@ -46,9 +46,7 @@
 include "Assets/components/navbar.php";
 require_once "shoppingcart/functions.php";
 
-// If the user clicked the add to cart button on the product page we can check for the form data
 if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['product_id']) && is_numeric($_POST['quantity'])) {
-    // Set the post variables so we easily identify them, also make sure they are integer
     $product_id = (int)$_POST['product_id'];
     $quantity = (int)$_POST['quantity'];
 
@@ -97,17 +95,14 @@ if (isset($_POST['update']) && isset($_SESSION['cart'])) {
             $quantity = (int)$v;
             // Always do checks and validation
             if (is_numeric($id) && isset($_SESSION['cart'][$id]) && $quantity > 0) {
-                // Update new quantity
                 $_SESSION['cart'][$id] = $quantity;
             }
         }
     }
-    // Prevent form resubmission...
     header('location: index.php?page=cart');
     exit;
 }
 
-// Send the user to the place order page if they click the Place Order button, also the cart should not be empty
 if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
     header('Location: index.php?page=placeorder');
     exit;
@@ -139,7 +134,7 @@ if ($products_in_cart) {
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 <div class="cart content-wrapper">
     <h1>Shopping Cart</h1>
-    <form action="index.php?page=cart" method="post">
+    <form action="cart.php?page=cart" method="post">
         <table>
             <thead>
                 <tr>
@@ -158,14 +153,14 @@ if ($products_in_cart) {
                 <?php foreach ($products as $product): ?>
                 <tr>
                     <td class="img">
-                        <a href="index.php?page=product&id=<?=$product['id']?>">
-                            <img src="Assets/product-images/<?=$product['img']?>" width="50" height="50" alt="<?=$product['name']?>">
+                        <a href="product.php?page=id=<?=$product['id']?>">
+                        <img src="Assets/product-images/<?= $product['id'] ?>.png" width="50" height="50" alt="<?= $product['name'] ?>">
                         </a>
                     </td>
                     <td>
                         <a href="index.php?page=product&id=<?=$product['id']?>"><?=$product['name']?></a>
                         <br>
-                        <a href="index.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>
+                        <a href="cart.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>
                     </td>
                     <td class="price">&euro;<?=$product['price']?></td>
                     <td class="quantity">

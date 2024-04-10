@@ -6,9 +6,10 @@
     <title>Admin page</title>
     <link rel="stylesheet" href="Assets/Styles/admin-style.css">
 </head>
-<body class="">
+<body>
 <?php include "Assets/components/navbar.php";?>
-<h1>Admin</h1>
+<h1 style="text-align: center;">Welcome to Admin!</h1>
+<hr>
     <!-- <nav>
         <ul>
             <li><a href="add_product.php">Manage Products</a></li>
@@ -83,6 +84,7 @@ try {
     $stmt = $conn->query($sql);
 
     if($stmt->rowCount() > 0) {
+        echo "<hr class='custom-hr'>";
         echo "<h3>Products</h3>";
         echo "<a class='add-btn' href='admin/add_product.php'>Add New Product</a><br/><br/>";
         echo "<table>";
@@ -116,8 +118,9 @@ try {
         
         echo "</table>";
     } else {
-        echo "No products found.";
-        echo "<br><a href='admin/add_product.php'>Add New Product</a><br/><br/>";
+        echo "<br><div class='emptyMessage'>No products found.</div>";
+        echo "<hr class='custom-hr'>";
+        echo "<br><a class='add-btn' href='admin/add_product.php'>Add a New Product</a><br/><br/>";
     }
 }
 catch(PDOException $e) {
