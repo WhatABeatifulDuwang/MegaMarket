@@ -48,9 +48,14 @@
     </div>
     <main class="product-container">
         <?php
-
+        $searchBarInput = isset($_GET['searchBarInput']) ? $_GET['searchBarInput'] : null;
         $category = isset($_GET['category']) ? $_GET['category'] : null;
-        $products = getAllProducts($category);
+
+        if ($searchBarInput !== null) {
+            $products = searchProducts($searchBarInput);
+        } else {
+            $products = getAllProducts($categoy);
+        }
 
         if (!empty($products)) {
             foreach ($products as $product) {

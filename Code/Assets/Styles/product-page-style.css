@@ -95,3 +95,20 @@ body {
 .category-list li:hover {
   background-color: #1EB0BF;
 }
+ 
+/* Ik ga niet liegen dit hieronder komt van chatgpt, ik wist oprecht niet dat dit kon */ 
+.product-container::-webkit-scrollbar { 
+  width: 15px; 
+} 
+ 
+.product-container::-webkit-scrollbar-track { 
+  background: #1b5bff; 
+} 
+ 
+.product-container::-webkit-scrollbar-thumb { 
+  background: #1EB0BF; 
+} 
+ 
+.product-container::-webkit-scrollbar-thumb:hover { 
+  background: #0e7675; 
+}

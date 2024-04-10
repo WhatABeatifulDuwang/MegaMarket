@@ -15,8 +15,9 @@ if (isset($_POST['logout'])) {
 <header class="header">
     <a href=index.php><img class="logo" src="Assets/images/logo.png" alt="Company Logo"></a>
     <div class="search-bar">
-
-        <input type="text" placeholder="What are you looking for?">
+        <form id="searchForm" action="product-page.php" method="GET">
+            <input id="searchInput" type="text" name="searchBarInput" placeholder="What are you looking for?">
+        </form>
     </div>
     <div class="nav-wrapper">
         <nav class="navbar">

@@ -250,3 +250,18 @@ function getAllProducts($category = null) {
         return array();
     }
 }
+
+// Searches Products
+function searchProducts($searchTerm) {
+    global $conn;
+
+    try {
+        $searchTerm = '%' . $searchTerm . '%';
+        $stmt = $conn->prepare("SELECT * FROM products WHERE name LIKE :searchTerm OR description LIKE :searchTerm");
+        $stmt->bindParam(':searchTerm', $searchTerm);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return array();
+    }
+}
